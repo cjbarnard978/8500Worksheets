@@ -145,13 +145,14 @@ Whatever you prefer, be consistent and your future self will thank you when your
 (@) You try, create a variable and assign it a number: 
 
 ```{r}
+helios <- 7
 
 ```
 
 (@) Can you assign a string to a variable?
 
 ```{r}
-
+Illum <- "my cat"
 ```
 
 Once we've assigned a variable we can use that variable to run calculations just like we did with raw numbers.
