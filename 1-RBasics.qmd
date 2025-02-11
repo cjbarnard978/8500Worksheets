@@ -108,7 +108,8 @@ Logical Operators allow you to combine or change the results of comparisons.
 
 (@) Create your own comparison. 
 ```{r}
-
+5==15 
+3 !=4 | 6
 ```
 
 ---
