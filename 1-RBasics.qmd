@@ -28,9 +28,18 @@ Numbers can be used to do arithmetic.
 ```
 
 (@) You try, multiple two numbers. 
-
+```{r}
+4 * 8
+```
 
 (@) Can you multiply two numbers and then divide by the result? 
+```{r}
+4*6
+```
+```{r}
+4*6/24
+```
+
 
 The next type of value is a **string**. Strings are lines of text. Sometimes these are referred to as character vectors. To create a string, you add text between two quotation marks. For example: 
 ```{r}
@@ -39,7 +48,7 @@ The next type of value is a **string**. Strings are lines of text. Sometimes the
 
 (@) Try to create your own string.
 ```{r}
-
+"R scares me"
 ```
 
 You can't add strings using `+` like you can numbers. But there is a function called `paste()` which concatenates character vectors into one. This function is _very_ useful and one you'll use a lot in a variety of circumstances. Here's what that looks like: 
@@ -50,11 +59,11 @@ paste("Hello", "Clemson Graduate Students")
 
 (@) Try it, add two strings together like the above example. 
 ```{r}
-
+paste("I made lunch", "and dinner")
 ```
 
 (@) Can you explain what happened in 2-3 sentences? 
-
+Strings are like clauses in a sentence. When you add strings together using the paste function, you take 2 clauses separated by a comma and turn them into a sentence. It creates a complete thought or complete action rather than separate actions that don't make much sense alone. 
 > 
 
 The last type are **logical** values like `TRUE` and `FALSE`. (Note that these are all caps.)
