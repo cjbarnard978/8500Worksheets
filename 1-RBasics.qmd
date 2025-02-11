@@ -104,7 +104,7 @@ Logical Operators allow you to combine or change the results of comparisons.
 ```
 (@) Explain, what does the code on each line above do? 
 
->
+>Line 98: The code asks the computer if 5 is equal to 10. Because 5 is not equal to 10, the terminal states that it is false. Line 99: The code asks the computer if 3 is less than 4. Because 3 is less than 4, the terminal states that it is true. Line 100 and 101 ask if 5 is unequal to 10 and 5. Since 5 is not equal to 10, line 100 is false. Since 5 is equal to 5, line 101 is true. Line 102 asks if 3 is equal to 4 OR 3. Since 3 is equal to 3, the line is true. Line 103 asks if 3 is not equal to 4 and (&) not equal to 5. Since 3 is not equal to either number, the line is true. If 3 was equal to either number, it would be false, since the ampersand specifies that 3 must be unequal to both numbers.
 
 (@) Create your own comparison. 
 ```{r}
