@@ -231,19 +231,19 @@ my.numbers * 2
 ```
 (@) Explain in a few sentences, what happened in the code above?
 
->
+>The vector "my.numbers" contains the numbers 2, 4, 6, and 8. By multiplying the vector "my.numbers" by 2, you multiply each variable by 2 individually. In R terminal, you get the output 4, 8, 12, and 16. 
 
 Lets try something slightly different. 
 ```{r}
 my.numbers[3] * 2
 ```
 (@) Explain in a few sentences, what happened in the code above? 
-
+The code above isolates the third number in the vector "my.numbers", which is 6. Then it multiplies 6 by 2. 
 >
 
 (@) You try, create a list of five items and store it in a descriptive variable. 
 ```{r}
-
+my.grocerylist <- c(bread, milk, eggs, ice cream, potatoes)
 ```
 
 
