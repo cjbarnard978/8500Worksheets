@@ -325,7 +325,7 @@ What is going on here? Each line within this function (x,y,z) creates a new colu
 
 (@) What is going on in row z? Can you explain the logic here?
 
->
+>In row z, the value from x (a number from 1-5) is multiplied by 2. So 1x2 is 2, 2x2 is 4, 3x2 is 6, 4x2 is 8, and 5x2 is 10. Then, the y value, 1, is added to (x*2). 2+1 is 3, 4+1 is 5, 6+1 is 7, 8+1 is 9, and 10+1 is 11. 
 
 
 ## Loading Dataframes from Packages
