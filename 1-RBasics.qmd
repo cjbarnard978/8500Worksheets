@@ -275,13 +275,18 @@ We can ask R to pull up the documentation like this:
 
 (@) Now you try, find the documentation for the function  `signif()`.
 ```{r}
-
+?signif()
 ```
 
 In real life, you typically you wouldn't want to store this code in your script file. You probably don't need to pull up the documentation for the function every time you run that piece of code. But for the purposes of this worksheet we're adding it to our `.Rmd` document. 
 
 (@) Use the console to find the documentation for `floor()`? Try it and then tell me, what does that function do? 
+```{r}
+?floor()
+```
 
+the floor function takes a numeric argument coded as x or a variable and returns a vector containing any number less than the argument contained in the variable.
+I assume that means if x is something like y+6<20 it will yield a vector containing all numbers that could apply to the y value. 
 >
 
 ### Data Frames & Packages
