@@ -243,7 +243,7 @@ The code above isolates the third number in the vector "my.numbers", which is 6.
 
 (@) You try, create a list of five items and store it in a descriptive variable. 
 ```{r}
-my.grocerylist <- c(bread, milk, eggs, ice cream, potatoes)
+mygrocerylist <- c("milk", "bread", "eggs", "ice cream", "potato chips")
 ```
 
 
