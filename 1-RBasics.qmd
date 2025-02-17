@@ -347,7 +347,8 @@ Run `help(package="DigitalMethodsData")` in your console to pull up a list of da
 
 For demonstration purposes we'll use the `gayguides` data here. Pull up the help documentation for this dataset. What does the documentation tell you abou the scope of this dataset? 
 
->
+The documentation gives a description of the dataset that states where the data was collected from Bob Damron's guidebooks, published 1965-1985. It has a last updated date of December 2022. It offers a usage that is just "gayguides," a formatting description, and two examples of codes you can run using the dataset.
+>The data
 
 To use a dataset included in this package we first need to load it. We can do so like this:
 
