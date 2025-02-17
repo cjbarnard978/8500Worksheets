@@ -395,28 +395,33 @@ gayguides$title[500]
 
 (@) Break this down. Whats going on here? What do each of the elements of this code mean? (gayguides, $, title, and [500]) 
 
->
+>gayguides is the dataset the code is pulling from. The $ says that I'm requesting a specific chunk of the dataset. Title specifies which column to pull from. 500 tells the code which row to pull out and display.
 
 (@) The Year variable contains the year (numeric) of each entry. Can you find the earliest year in this dataset? (Using code, don't cheat and use the documentation!)
 ```{r}
-
+min(gayguides$Year)
 ```
-
+1965
 
 (@) How about the latest year? 
 ```{r}
-
+max(gayguides$Year)
 ```
+1985
 
 
 (@) Add another dataset from `DigitalMethodsData`. How many observations are included in this dataset? Run through some of the examples from above to learn about the dataset.
 ```{r}
-
+data(almshouse_admissions)
+str(almshouse_admissions)
+min(almshouse_admissions$Year.Admitted)
+max(almshouse_admissions$YearDischarged)
+min(almshouse_admissions$Year.Admitted)
+almshouse_admissions[which.min(almshouse_admissions$date)]
 ```
 
 (@) What did you learn about the dataset? What can you tell me about it? 
-
->
+>Using the string command I learned that the database contains the name, the year and month admitted, the gender, a clerk's description of the person, and the information about their discharge from the Pennsylvania almshouse. There are 1400 rows of data in the dataset. The dataset is organized alphabetically by last name. The final year someone was discharged in this dataset was 1813. When running code to see what the minimum year was, I kept getting "0" which I'm not sure how to fix-it worked above. Using statology, I tried a different method (shown above) and still didn't get a solution. 
 
 
 
