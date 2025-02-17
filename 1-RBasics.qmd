@@ -366,16 +366,16 @@ That gives us the first 6 rows of data. Its really useful if you just want to pe
 
 (@) The default is to print six rows of data. Can you modify the above code to print out the first 10 rows? 
 ```{r}
-
+head(gayguides, 10)
 ```
 
 (@) Can you find the last 6 rows of data? 
 ```{r}
-
+tail(gayguides)
 ```
 
 (@) Reflect on the previous two prompts. How did you figure these out? 
-
+I tried several things using the paste and command prompts we talked about during tech table last week. All of those options were overcomplicating things-I went onto stack overflow to look for a forum that dealt with head and tail commands. All I had to do was add "10" to the command to run the code. 
 >
 
 The `str()` function is another very useful function for understanding a dataset. It compactly displays the internal structure of an R object. 
