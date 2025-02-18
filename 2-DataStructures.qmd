@@ -102,12 +102,13 @@ In the `matrix()` function:
 
 (@) You try now, create a matrix that had five rows with numbers that range from 25 to 49. 
 ```{r}
-
+matrix(25:49, byrow = TRUE, nrow = 5)
 ```
 
 (@) Can you create a matrix that has 3 rows with only even numbers from 2 to 18? 
 ```{r}
-
+x <- c(2, 4, 6, 8, 10, 12, 14, 16, 18)
+matrix(x, byrow = TRUE, nrow = 3)
 ```
 
 ##### Subsetting Matricies 
