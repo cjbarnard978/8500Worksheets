@@ -73,7 +73,7 @@ x[x > 7]
 
 (@) What is going on in each of the lines above? Describe it in your own words. 
 
->
+>In the first code block, the code specifies that only the integer values in the vector x that correspond with TRUE should appear when the code is run. The first, third, and fourth values are true. Since x = 2, 5, 7, 8, 9, 12, the values 2, 7, and 8 correspond with the first, third, and fourth values and appear in the console when the code is run. Since my vector x is 6 values long, the sixth value also appears in the console because it does not have a TRUE/FALSE logical value assigned. In the second code block, x[x>7] will return any values in the vector x that are larger than 7. When run, it yields 8, 9, and 12 in my vector x. 
 
 Nothing returns the original vector. This isn't that useful here but can come in handy when you have more complex structures like matrices and arrays. 
 ```{r}
@@ -86,7 +86,7 @@ If your vector is named, you can also use character vectors to return elements w
 y[c("d")]
 ```
 (@) What happened here? Explain this in your own words. 
-
+The vector y is set to "setNames", which returns the letters a, b, c, d corresponding with the first through fourth integers in my vector x. A corresponds with 2, b corresponds with 5, c corresponds with 7, d corresponds with 8, and the values 9 and 12 are not assigned a letter because they are out of the parameters. y[c("d)"] asks the code to name the value attached to the letter d-when it runs, the console displays d and then 8. This tells me that d corresponds with the fourth value in my vector x, which is 8. 
 #### Matrices
 
 We can subset higher dimensional structures, like matrices, too. First lets define a matrix. In R, **a matrix** is a collection of elements of the same data type (numeric, character, or logical) arranged into a fixed number of rows and columns. Since you are only working with rows and columns, a matrix is called two dimensional. To create a matrix you can use the `matrix()` function.
