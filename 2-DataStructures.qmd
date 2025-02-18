@@ -177,10 +177,14 @@ y[2555:2560]
 
 (@) Load another dataset from `DigitalMethodsData`. Subset it to find some element of the data. Write the code below and then explain what element of the data you wanted to subset and why:
 ```{r}
-
+library(DigitalMethodsData)
+data("almshouse_admissions")
+almshouse_admissions[,1:5]
+x <-almshouse_admissions[,1:5]
+x[1:50,]
 ```
 
-> 
+> I wanted to subset year and gender and see if there was any noticeable correlation, but I wasn't sure how to pull just columns 3 and 5. I limited it to 50 to have a test group that was a more manageable size. 
 
 Another useful operator to know is `$` which we used a little bit in the previous worksheet. `$` is shorthand for accessing a variable in a dataframe. 
  
