@@ -1,7 +1,7 @@
 ---
 title: "Worksheet 2: Data Structures"
-author: ""
-date: ""
+author: "Cecilia Barnard"
+date: "02-23-2025"
 ---
 
 _This is the second in a series of worksheets for History 8500 at Clemson University. The goal of these worksheets is simple: practice, practice, practice. The worksheet introduces concepts and techniques and includes prompts for you to practice in this interactive document. When you are finished, you should change the author name (above), render your document to a pdf, and upload it to canvas. Don't forget to commit your changes as you go and push to github when you finish the worksheet._
@@ -41,7 +41,11 @@ x[c(3,3)]
 ```
 (@) Create your own vector and return three values using the subsetting method above. 
 ```{r}
-
+x <- c(2, 5, 7, 8, 9, 12)
+x[c(2, 4)]
+x[order(x)]
+x[c(1, 5)]
+x[c(2,2)]
 ```
 
 
