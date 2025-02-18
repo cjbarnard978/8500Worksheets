@@ -162,13 +162,17 @@ gayguides[1:3,]
 
 (@) Can you find just the city and state for the first 5 entries? 
 ```{r}
-
+gayguides[,9:10] 
+x <- gayguides[,9:10]
+x[1:5,]
 ```
 
 (@) How about the street address and type for rows 2,555 to 2,560?
 
 ```{r}
-
+gayguides[,6]
+y <- gayguides[,6]
+y[2555:2560]
 ```
 
 (@) Load another dataset from `DigitalMethodsData`. Subset it to find some element of the data. Write the code below and then explain what element of the data you wanted to subset and why:
