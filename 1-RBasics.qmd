@@ -31,14 +31,17 @@ Numbers can be used to do arithmetic.
 ```{r}
 4 * 8
 ```
+32
 
 (@) Can you multiply two numbers and then divide by the result? 
 ```{r}
 4*6
 ```
+24
 ```{r}
 4*6/24
 ```
+1
 
 
 The next type of value is a **string**. Strings are lines of text. Sometimes these are referred to as character vectors. To create a string, you add text between two quotation marks. For example: 
@@ -61,6 +64,7 @@ paste("Hello", "Clemson Graduate Students")
 ```{r}
 paste("I made lunch", "and dinner")
 ```
+I made lunch and dinner
 
 (@) Can you explain what happened in 2-3 sentences? 
 Strings are like clauses in a sentence. When you add strings together using the paste function, you take 2 clauses separated by a comma and turn them into a sentence. It creates a complete thought or complete action rather than separate actions that don't make much sense alone. 
@@ -111,7 +115,8 @@ Logical Operators allow you to combine or change the results of comparisons.
 5==15 
 3 !=4 | 6
 ```
-
+5==10 is false 
+3 !=4 | 6 is true
 ---
 
 ### Variables
@@ -160,7 +165,7 @@ Once we've assigned a variable we can use that variable to run calculations just
 x <- 25
 x * 5
 ```
-
+125
 R can also handle more complex equations. 
 ```{r}
 (x + x)/10
@@ -179,11 +184,13 @@ y <- 8
 x + y
 
 ```
+11
 
 (@) Can you take `x` and `y` and multiply the result by 5? 
 ```{r}
 (x+y)*5
 ```
+55
 
 (@) Try creating two variables with names other than `x ` and `y`. Descriptive names tend to be more useful. Can you multiply the contents of your variables? 
 ```{r}
@@ -191,6 +198,7 @@ helios.age <- 7
 illum.age <- 5
 helios.age * illum.age
 ```
+35
 
 (@) Try creating two variables that store strings. Can you concatenate those two variables together? 
 ```{r}
@@ -198,7 +206,7 @@ x <- "Wednesday's Schedule"
 y <- "Hist 1730 Hist 8500 Hist 8520"
 paste(x, y)
 ```
-
+Wednesday's Schedule Hist 1730 Hist 8500 Hist 8520
 ### Vectors
 
 If we have a lot of code and rely on just variables, we're going to have a lot of variables. That's where **vectors** come into play. Vectors allow you to store multiple values. All variables in R are actually already vectors. That's why when R prints an output, there is a `[1]` before it. That means there is one item in that vector. 
@@ -244,6 +252,7 @@ The code above isolates the third number in the vector "my.numbers", which is 6.
 (@) You try, create a list of five items and store it in a descriptive variable. 
 ```{r}
 mygrocerylist <- c("milk", "bread", "eggs", "ice cream", "potato chips")
+
 ```
 
 
