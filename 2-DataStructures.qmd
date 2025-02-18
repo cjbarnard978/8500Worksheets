@@ -56,7 +56,7 @@ x[-c(3, 1)]
 
 (@) What happened here? Describe this in your own words. 
 
->
+>By using a negative integer, the code removed the 3rd and the 1st value from the list of values contained in the vector X. My values were originally 2, 5, 7, 8, 9, and 12. By running that code I excluded 2 and 7 from the list of values in my vector, making the output in the console read 5, 8, 9, and 12. 
 
 You can use either positive or negative integers to subset a vector but you **cannot mix the two**.
 
