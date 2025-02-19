@@ -323,11 +323,10 @@ Create a character vector that contains the title of each of your classes this s
 
 ```{r}
 myclasses <-c("HIS8500", "HIS8520", "HIS8800", "HIS1730")
-x <- "I am enrolled in"
-myfunction <- function(x, myclasses)
-for (p in 1:length(myclasses)) {
-  print(myfunction)
+for(c in 1:length(myclasses)) {
+  print(paste("I am enrolled in", myclasses)[c])
 }
+
 ```
 
 Sometimes we want our loop to terminate itself early. There are two statements that help us do that: 
@@ -365,22 +364,32 @@ The criteria for the loop stated that if i was greater than three to continue. H
 x <- [statepopulations$STATE]
 y <- [statepopulations$X1800]
 y
-for (x in statepopulations)
+for (x in statepopulations) {
   if (y > 200000)
     next
   
-  if (y == NA)
+  if (y < 250000)
     next
 
-  if (y < 250000)
+  if (y == NA)
     break 
 
   print (x)
+}
 ```
 
 (@) What if we wanted to loop through the gay guides data? Can you write a loop that iterates through the cities in the Gay Guides data and returns the title of any location in Greenville? 
 ```{r}
+for (gayguides$city) {
 
+  if (gayguides$city == "Greenville")
+    next 
+
+  if (gayguides$city != "Greenville")
+    break 
+
+  print(gayguides$city)
+}
 ```
 
 `while` is another useful tool for writing loops. While will run a loop _while_ a condition is true. Once that condition is not true, it exits. For example: 
