@@ -277,11 +277,14 @@ if (list.presidents > 5) print("TRUE") else if (list.presidents < 5) print("FALS
 (@) You can also use an if statement to check a variable in a dataframe. How might you use an if statement to check if the GayGuides dataset contains any year after 1990? (Hint: first try to figure out how to determine the latest year in the dataframe and then build an if statement that checks that and prints something out if its true or false. You should think about what kind of value in contained in the Year column, how to access it, and how to check for the latest value.) 
 
 ```{r}
+max(gayguides$Year) 
+x <- 1985
+if (x > 1990) print("TRUE") else if (x < 1990) print("FALSE")
 ```
 
 (@) Reflect on the question above. How did you figure this out? What was the process you went through to build this chunk of code?
 
-> 
+> First I looked for the max year, which was 1985. I couldn't escape the error message of "the condition has length >1" and when I looked it up it said to fix it, make sure that x is a variable, not a vector. I made x a variable equal to gayguides$year and the code ran, but it yielded "true," which I know is not the case. I changed x to the max year I know is in the dataset, 1985, and the code yielded FALSE. However, I'm not sure if this was the right final move.
 
 #### Loops
 
