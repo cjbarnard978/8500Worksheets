@@ -62,7 +62,7 @@ You can use either positive or negative integers to subset a vector but you **ca
 
 We can assign logical values to each value in a vector and use those to subset the data. Logical vectors select elements where the corresponding logical value is `TRUE`. Remember, we created a vector earlier and assigned it to x. Now, below, we assign logical values to each of the values in that vector. We're doing this by hand here, but you can imagine a scenario down the road where you use this technique to apply `TRUE` or `FALSE` values to a huge dataset dependent on some principal. When we run this, only the `TRUE` values are printed out. 
 ```{r}
-#create a vector 
+create a vector 
 x[c(TRUE, FALSE, TRUE, TRUE, FALSE)]
 ```
 
@@ -314,14 +314,20 @@ for (p in 1:length(presidents)) {
 }
 ```
 
-(@) Why does this work? What does `length()` do and why do we use it on `presidents`?
+(@) Why does this work? What does `length()` do and why do we use it on `presidents`
 
+Length acts as a command telling the code to create a result based on every variable in the list. Using it on presidents ensures that even if the number of presidents in the list changes the code still functions the same.
 > 
 
 Create a character vector that contains the title of each of your classes this semester. Can you write a `for` loop that prints out "I am enrolled in" and the name of each of your classes? ("I am enrolled in History 8150", "I am enrolled in History 8000".....etc). Hint: you'll need a function to combine the output and some text of your choosing inside the function. 
 
 ```{r}
-
+myclasses <-c("HIS8500", "HIS8520", "HIS8800", "HIS1730")
+x <- "I am enrolled in"
+myfunction <- function(x, myclasses)
+for (p in 1:length(myclasses)) {
+  print(myfunction)
+}
 ```
 
 Sometimes we want our loop to terminate itself early. There are two statements that help us do that: 
@@ -352,7 +358,7 @@ for (i in 1:10) {
 ```
 
 (@) What happened here? Why did the loop only print 3 and 4? 
-
+The criteria for the loop stated that if i was greater than three to continue. However, the break command states that when x is equal to or greater than 5, stop the loop. Out of the integers 1:10, only 3 and 4 meet the criteria set forth by the loop. Thus, because of the break command, the loop stopped running when it hit 5. 
 
 (@) In the state population data, can you write a loop that pulls only states with populations between 200,000 and 250,000 in 1800? You could accomplish this a few different ways. Try to use next and break statements. 
 ```{r}
