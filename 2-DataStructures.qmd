@@ -428,7 +428,7 @@ You'll notice that the variable we created inside the function, `myvalue`, doesn
 
 Here's another example: 
 ```{r}
-historyStudents <- function(studentname, class) {
+historyStudents <- function(studentname, class){
   statement <- paste("Hello ", studentname, ". Welcome to ", class, "!", sept="")
   statement
 }
@@ -448,12 +448,22 @@ There are several components to a function.
 
 (@) Write a function that takes a string of text and counts the number of characters. The function should return "There are xx characters in that string." 
 ```{r}
+countstring <-nchar("this is a string of text")
+countstring
+```
+```{r}
+countstring <-function(nchar) {
+  nchar(x)
+  statement <-paste("There are", nchar(x), "characters in that string")
+  statement
+}
+countstring(nchar("this is a string"))
 
 ```
 
 (@) Reflect on the process of building the above function. How did you go about figuring this out? 
 
->
+>First I tried to model the function off the previous function. I made changes based on the syntax errors the terminal pointed out. When that did not work I turned to research. According to stack overflow, one way to do this is using the nchar command. Since we used nrow earlier that's what I tried next. Nchar did count the characters in "this is a string of text" but then I struggled to write the statement. I went back to the previous function to model the statement, using my function, double checking the syntax. I realized I had been missing the commas in the paste function. Error: "Unexpected string constant," which is apparently a sept error. Fixed the sept error. On a whim I decided to try print instead of paste. That didn't work. Nothing worked, so I went back to stack overflow. I could get the nchar function to work, but not the statement. I made the function "countstring" its own code block so you could see that before trying to write a statement again, using the countstring function. According to dataquest, you can write a function within a function. After setting nchar to x instead of a specific string of text, it counted a string of text. I'm still not sure it's really running correctly, but it's yielding a response. 
 
 The body of a functions can use any of the techniques we've learned in this worksheet like loops and if statements. For example: 
 ```{r}
