@@ -378,14 +378,14 @@ for (i in 1:nrow(statepopulations)) {
 
 (@) What if we wanted to loop through the gay guides data? Can you write a loop that iterates through the cities in the Gay Guides data and returns the title of any location in Greenville? 
 ```{r}
-x <- "Greenville"
+
 
 for (i in 1:nrow(gayguides)) {
 
-  if (gayguides$city[i == x])
+  if (gayguides$city[i] == "Greenville")
     next
 
-  if (gayguides$city[i != x])
+  if (gayguides$city[i] != "Greenville")
     break 
 
   print(paste(gayguides$title))
