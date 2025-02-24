@@ -489,9 +489,10 @@ grade(75)
 (@) In the example below, why doesn't George Washington's grade get printed out? 
 ```{r}
 GeorgeWashington <- grade(60)
+GeorgeWashington
 ```
 
->
+>You created a variable that essentially absorbed the original function. Instead of running grade(60) as the function, GeorgeWashington has to be run as a variable to call the function. To call the original function, run "GeorgeWashington" and you get C. 
 
 
 Here's a more complex example: 
@@ -503,7 +504,7 @@ gg.locations <- function (d.city, d.year) {
     if (gayguides$city[i] == d.city && gayguides$Year[i] == d.year) {
      print(paste("Found a location called ", gayguides$title[i]))
     } else {
-      next 
+      next
     } 
   }
 }
@@ -514,7 +515,20 @@ gg.locations("San Diego", 1980)
 (@) Write a function that accepts two arguments: a state and a year. The function should pull all the locations in that state and year from the gayguides dataset and return a statement that says "Found a location in [state] called [location title]". (Where [state] is the state and [location title] is the title of a location in that year and state.)
 
 ```{r}
+gg.stateyearlocation <- function (d.state, d.year) {
+  data(gayguides)
 
+  for (i in 1:length(gayguides$state)) {
+
+    if (gayguides$state[i] == d.state && gayguides$Year[i] == d.year) {
+
+      print(paste("Found a location in", gayguides$state[i], "called", gayguides$title[i]))
+    } else {
+      next
+    }
+  }
+} 
+gg.stateyearlocation ("SC", 1973)
 ```
 
 (@) Use the Boston Women Voters dataset (BostonWomenVoters). Write a function that accepts the name of an occupation. Your function should return new dataframe that includes the records for every voter listed with that occupation.  
