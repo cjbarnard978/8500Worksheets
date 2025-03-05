@@ -81,25 +81,31 @@ gayguides %>%
 (@) The above code grabs every location where the city is Greenville. However, there is more than one city named Greenville. Can you filter to retrieve Greenville, SC? 
 
 ```{r}
-
+#| eval: false 
+gayguides %>% 
+  filter(city == "Greenville", state == "SC")
 ```
 
 (@) How about every location between 1975 and 1980? 
 
 ```{r}
-
+#| eval: false 
+gayguides %>% 
+  filter(Year == 1975:1980)
 ```
 
 
 (@) Every entry in Greenville, SC between 1975 and 1980? 
 
 ```{r}
-
+gayguides %>% 
+  filter(city == "Greenville", state == "SC", Year == 1975:1980)
 ```
 
 (@) Can you find all locations in 1975 except for New York and San Francisco? 
 ```{r}
-
+gayguides %>%
+  filter(Year == 1975) %>% filter(city != "New York" | city != "San Francisco")
 ```
 
 (@) The amenity features column in gay guides contains a comma separated list of categorizations. (G), for example, stands for girls. However, this language changed over time and women's locations eventually are described as (L). What if we want to filter by any entry that has (G) OR (L) in the amenity feature column?  This is a bit more complicated because the entries are a comma separated list and (G) or (L) is often paired with other categorizations. How might you _search the dataframe for entries that match_ (G) or (L)?
