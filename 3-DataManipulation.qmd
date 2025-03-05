@@ -51,7 +51,9 @@ gayguides %>%
 
 (@) Can you use `select()` to grab all the columns of `gayguides` EXCEPT for the city and state? Hint: You might want to read the documentation for this function. 
 ```{r}
-
+?select()
+gayguides %>%
+  select(!c(city, state))
 ```
 
 ### Filter
