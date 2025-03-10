@@ -105,7 +105,7 @@ gayguides %>%
 (@) Can you find all locations in 1975 except for New York and San Francisco? 
 ```{r}
 gayguides %>%
-  filter(Year == 1975) %>% filter(city != "New York" | city != "San Francisco")
+  filter(Year == 1975) %>% filter(city != "New York" & city != "San Francisco")
 ```
 
 (@) The amenity features column in gay guides contains a comma separated list of categorizations. (G), for example, stands for girls. However, this language changed over time and women's locations eventually are described as (L). What if we want to filter by any entry that has (G) OR (L) in the amenity feature column?  This is a bit more complicated because the entries are a comma separated list and (G) or (L) is often paired with other categorizations. How might you _search the dataframe for entries that match_ (G) or (L)?
@@ -142,7 +142,7 @@ locationcitystate <- gayguides %>% mutate(location = paste(city, state, sep = ",
 
 ```{r}
 #| eval: false
-
+data(gayguides)
 gayguides %>%
   arrange(Year)
 
@@ -177,7 +177,10 @@ What happened here? In this example, we asked group_by to create groups based on
 
 (@) You try, use group_by and summarize to find the total number of locations in each state, each year.
 ```{r}
-
+locations.gg <- gayguides %>% 
+select(city, state, Year) %>%
+group_by(state, Year) %>%
+summarize(count =n())
 ```
 
 (@) Summarize can do more than just count rows. Can you use `summarize()` to find the average age for each occupation in the Boston Women Voters data?
