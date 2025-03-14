@@ -229,9 +229,13 @@ head(almshouse_admissions)
 (@) Below I've downloaded data about each of the census regions. Join this dataset with `gayguides`. Create a data frame that includes each of the regions and the total number of locations in 1980. How many locations appear in the Mountain region in 1980?
 ```{r}
 regions <- read.csv("https://raw.githubusercontent.com/regan008/DigitalMethodsData/main/raw/censusregions.csv")
+ggregions <-left_join(gayguides, regions, by=c("state"="State.Code"))
+regions1980 <- ggregions %>% select(city, state, Year, Region, Division) %>% filter(Year == 1980) %>% filter(Division == "Mountain") %>% summarize(count = n())
+
 ```
 
 (@) Explain what you did above. What variable did you join by and why? What results?
+I used a left join to combine the state column in the gayguides dataset to the State.Code column in the regions dataset. Since they both used state codes like AK etc this combined the datasets into one large one I called ggregions. I selected the columns that I would base the location count off of using select, then filtered by the year 1980. I took the filtered dataset and grouped by city, state, and filtered by the mountain division. Then I summarized the data using count to get my number of locations. There are 285 locations in the gayguides data for the mountain division in 1980.
 
 (@)How much did LGTBQ life grow between 1970 and 1980? Can you create a data frame that computes the growth in the number of locations between 1970 and 1980 for every state? For every region? 
 ```{r}
