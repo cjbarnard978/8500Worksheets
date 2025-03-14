@@ -177,6 +177,7 @@ What happened here? In this example, we asked group_by to create groups based on
 
 (@) You try, use group_by and summarize to find the total number of locations in each state, each year.
 ```{r}
+data(gayguides)
 locations.gg <- gayguides %>% 
 select(city, state, Year) %>%
 group_by(state, Year) %>%
@@ -185,10 +186,11 @@ summarize(count =n())
 
 (@) Summarize can do more than just count rows. Can you use `summarize()` to find the average age for each occupation in the Boston Women Voters data?
 ```{r}
-
+data(BostonWomenVoters)
+BWVage.occupation <- BostonWomenVoters %>% select(Age, Occupation) %>% group_by (Occupation) %>% summarize(mean_age = mean (Age))
 ```
-
-(@) In the `gayguides` data, on average how many locations did each city in South Carolina have between 1970 and 1975?
+(@) In the `gayguides` data, on average how many locations did each city in South Carolina have between 1970 
+and 1975?
 ```{r}
 
 ```
@@ -203,6 +205,7 @@ southernstates <- c("AL", "AR", "FL", "GA", "KY", "LA", "MD", "MS", "NC", "SC", 
 
 ### Joins()
 At some point, you might have a situation where you want to join two tables together. For example, in the `almshouse_admissions` dataset there is a column called "Descriptions.by.Clerk" which contains a code for each occupation.
+
 ```{r}
 data("almshouse_admissions")
 head(almshouse_admissions$Descriptions.by.Clerk)
