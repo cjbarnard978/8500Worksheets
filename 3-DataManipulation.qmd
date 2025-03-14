@@ -192,8 +192,10 @@ BWVage.occupation <- BostonWomenVoters %>% select(Age, Occupation) %>% group_by 
 (@) In the `gayguides` data, on average how many locations did each city in South Carolina have between 1970 
 and 1975?
 ```{r}
-
+data(gayguides)
+gg.sc <- gayguides %>% select(city, state, Year) %>% filter (state == "SC", Year == 1970:1975) %>% group_by (city, state) %>% summarize (count = n()) %>% mean(9+2+3)/3
 ```
+#this method worked for this dataset but if it was any bigger it would have taken forever-please advise if you get a second. 
 
 (@) Filter the dataset for only the values in the southernstates list (created in the block below). Then tell me, how many locations were in all the southern states in 1975?
 ```{r}
