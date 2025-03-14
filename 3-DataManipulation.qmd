@@ -200,6 +200,7 @@ gg.sc <- gayguides %>% select(city, state, Year) %>% filter (state == "SC", Year
 (@) Filter the dataset for only the values in the southernstates list (created in the block below). Then tell me, how many locations were in all the southern states in 1975?
 ```{r}
 southernstates <- c("AL", "AR", "FL", "GA", "KY", "LA", "MD", "MS", "NC", "SC", "TN", "TX", "VI", "WV")
+gg.southernstates <- gayguides %>% filter(state == southernstates, Year == 1975) %>% group_by(city, state) %>% summarize(count =n())
 
 ```
 
