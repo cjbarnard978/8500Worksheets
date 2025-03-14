@@ -239,6 +239,11 @@ I used a left join to combine the state column in the gayguides dataset to the S
 
 (@)How much did LGTBQ life grow between 1970 and 1980? Can you create a data frame that computes the growth in the number of locations between 1970 and 1980 for every state? For every region? 
 ```{r}
+parsedggregions <- ggregions %>% select(city, state, Region, Division, Year) %>% group_by(Year) %>% summarise(count = n()) 
+#location count 1970: 1303
+#location count 1980: 4468
+#location change overall: 4468-1303 = 3165
+#I couldn't get any farther than this. 
 
 ```
 
