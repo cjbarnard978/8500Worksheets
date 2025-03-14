@@ -295,22 +295,27 @@ The implicit question was, "How many locations appear in each year?". The `judge
 
 (@) First, tell me, what is the question you are asking? 
 ```{r}
+data("judges")
+I want to know how many hispanic male judges were appointed. 
 
 ```
 
 (@) Now write some code to address that question. Comment the code with notes that explain your thinking as you go. Use functions like select(), filter(), etc to pair down your dataset and reshape it to address your question. 
 ```{r}
+judges %>% select (Gender, Race.or.Ethnicity) %>% group_by (Gender, Race.or.Ethnicity) %>% filter(Gender == "Male") %>% filter(Race.or.Ethnicity == "Hispanic")
 
+#First I selected the columns that I wanted to consider and then grouped by them-this might have been a redundant step, but it keeps me focused on the order of operations with data manipulation. Then I filtered by the gender and the race or ethnicity I was searching for. There are 10 male hispanic judges in the dataset.
 ```
 
 (@) Now ask a question of the `gayguides` data (or another dataset of your choice). What is the question you are asking? 
 ```{r}
-
+#How many women named Mary Smith were admitted to the almshouse in 1803?
 ```
 
 (@) Now write some code to address that question. Comment the code with notes that explain your thinking as you go. Use functions like select(), filter(), etc to pair down your dataset and reshape it to address your question. 
 ```{r}
-
+data(almshouse_admissions)
+marysmith <- almshouse_admissions %>% select(Last.Name, First.Name, Year.Admitted) %>% filter(Year.Admitted == 1803) %>% group_by(Last.Name == "Smith" & First.Name == "Mary") %>% summarize (count =n()) #generates 442 results
 ```
 
 (@) Write a function that filters the gay guides dataset. It should accept 2 arguments: year and state. When passed to the function the function should return only the title, type, state and year for each entry. 
