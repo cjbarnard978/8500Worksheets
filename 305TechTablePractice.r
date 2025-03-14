@@ -7,7 +7,7 @@ print(y)
 
 Group by and summarize for BWV data
 data(BostonWomenVoters)
-avg.BWV <- BostonWomenVoters %>% group_by(age, occupation) %>% summarize(mean = etc )
+avg.BWV <- BostonWomenVoters %>% group_by(Age, Occupation) %>% summarize(mean = Age)
 
 joined.gg <- left_join(gayguiddes, regions, by=c("state" = "State.Code"))
 joined.gg <- joined.gg %>% select(-State)
