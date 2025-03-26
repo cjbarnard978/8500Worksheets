@@ -87,6 +87,14 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y=lifeExp, color=year)) + 
 (@) The file below contains data about the population of cities in 1930 and their recreation expenditures. Can you create a scatter plot from this data? 
 ```{r}
 rec <- read.csv(file = "https://raw.githubusercontent.com/regan008/DigitalMethodsData/main/raw/Recreation-Expenditures.csv")
+
+p <-ggplot(data = rec, mapping = aes(x=city, y=total_expenditures, color=state))
+p + geom_point()
+#this doesn't really visualize the data in a meaningful way so I flipped x and y to see what happened
+
+p <-ggplot(data = rec, mapping = aes(x=total_expenditures, y=city, color=state))
+p + geom_point()
+
 ```
 
 The `geom_point()` function allows us to create scatterplots but its not the only geom within `ggplot2()`.
