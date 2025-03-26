@@ -1,7 +1,7 @@
 ---
 title: 'Worksheet 4: Data Visualization'
-author: ""
-date: ""
+author: "Cecilia Barnard"
+date: "2025-03-31"
 ---
 
 _This is the fourth in a series of worksheets for History 8500 at Clemson University. The goal of these worksheets is simple: practice, practice, practice. The worksheet introduces concepts and techniques and includes prompts for you to practice in this interactive document. When you are finished, you should change the author name (above), render your document to a pdf, and upload it to canvas. Don't forget to commit your changes as you go and push to github when you finish the worksheet._
@@ -36,7 +36,7 @@ data(gapminder)
 
 (@) Take a look at the data. What can you say about it? 
 
-> 
+> The dataset contains life expectancy, population, and GDP per capita on 5 year intervals from 1952-2007. The dataset contains this information for every country, listed alphabetically. 
 
 This data includes variables for life exptenency and per capita GDP. Lets say we want to plot these two variables against each other for all country-years within the dataset. First we have to tell `ggplot()` what our data is. 
 ```{r}
@@ -47,7 +47,8 @@ What happened here? A new variable, `p` was created but we didn't get a plot yet
 
 Mappings in `ggplot` are defined using the `aes()` function like this: 
 ```{r}
-p <- ggplot(data = gapminder, mapping = aes(x = gdpPercap, y=lifeExp))
+p <- ggplot(data = gapminder, mapping = aes(x=gdpPercap, y=lifeExp))
+
 ```
 
 In this code we gave `ggplot()` two arguments instead of one - data and mapping. This tells ggplot that we want the data about GDP to be mapped to the x-axis and data about life expectancy on the y-axis. The `mapping = aes()` argument is **linking variables in our data to things you will see on the plot**.
@@ -64,7 +65,9 @@ To summarize what we did above, there were 3 steps we went through. First, tell 
 
 (@) Modify the above plot so that the variables it draws on are life expectancy and population. Then, use a comment to annotate the code and mark each of the 3 parts described above.
 ```{r}
-
+p <- ggplot(data = gapminder, mapping = aes(x = lifeExp, y = pop))
+p + geom_point()
+#ggplot(data = gapminder) tells ggplot what dataset to pull from-in this case the gapminder dataset. Mapping = aes(x=lifeExp, y=pop)tells ggplot to pull the variables of life expectancy and population and plot the first on the x axis and the second on the y axis. p + geom_point generates a scatterplot using life expectancy as the x axis and population as the y axis per variable p. 
 ```
 
 We can make this plot even more complex. Adding another value, color, to `aes()` we can change the color of each dot to correspond to a year. We also might want to rename the x and y-axis so that the labels have a more useful description of the variable. We can do so using the labs function. 
