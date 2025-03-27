@@ -28,6 +28,7 @@ library(gapminder) #this is a dataset
 library(ggplot2) 
 library(tidyverse)
 library(DigitalMethodsData)
+
 ```
 To begin, we're going to use one of R's built in datasets. First lets take a look at the data: 
 ```{r}
@@ -140,9 +141,10 @@ ggplot(sc.rec, aes(x = state, y = state.expenditures )) +
 
 (@) Using the `gayguides` data, create a bar chart that shows the number of locations in 1980 in South Carolina, Georgia, and North Carolina. 
 ```{r}
-
+data("gayguides")
+gglocations <- gayguides %>% group_by(state, city, Year) %>% summarize(count = n()) %>% filter(state == "GA" | state == "NC" | state == "SC") %>% filter(Year == 1980)
+ggplot(gglocations, aes(x = state, y = count)) + geom_col() 
 ```
-
 (@) Using the `gayguides` data, plot the number of religious institutions in each state.
 ```{r}
 

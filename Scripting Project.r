@@ -13,6 +13,7 @@ ia_search(ats_query, num_results = 20)
 
 NLS_query <- c("contributor" = "National Library of Scotland", "language" = "iri")
 ia_search(NLS_query, num_results = 50)
+
 #this pulled results! Now let's try to download
 NLSdirectory <- tempdir() 
 ia_search(NLS_query, num_results = 50) %>% ia_get_items() %>% ia_files() %>% filter(type == "txt") %>% group_by(id) %>% ia_download(dir = NLSdirectory, overwrite = FALSE) %>% glimpse()
