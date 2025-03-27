@@ -145,9 +145,11 @@ data("gayguides")
 gglocations <- gayguides %>% group_by(state, city, Year) %>% summarize(count = n()) %>% filter(state == "GA" | state == "NC" | state == "SC") %>% filter(Year == 1980)
 ggplot(gglocations, aes(x = state, y = count)) + geom_col() 
 ```
+
 (@) Using the `gayguides` data, plot the number of religious institutions in each state.
 ```{r}
-
+ggchurch <- gayguides %>% group_by(state, type) %>% filter(type == "Religious Institution") %>% summarize(count = n())
+ggplot(ggchurch, aes(x = state, y = count, color = state)) + geom_col()
 ```
 
 (@) Formulate a question based on a dataset of your choice. That question should be something that would be appropriately answered by a bar chart. What is the question you want to explore?
