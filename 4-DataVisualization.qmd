@@ -154,11 +154,17 @@ ggplot(ggchurch, aes(x = state, y = count, color = state)) + geom_col()
 
 (@) Formulate a question based on a dataset of your choice. That question should be something that would be appropriately answered by a bar chart. What is the question you want to explore?
 
-<
+<#In the almshouse data, is there a specific month in which more people are admitted than any other month? Is there a month with less frequent admissions? Do admissions change by the season? How does this vary by year
 
 (@) Now write the code to answer that question and use comments (`#`) to explain your thinking as you go.
 ```{r}
-
+aamonth <- almshouse_admissions %>% group_by(Year.Admitted, Month.Admitted) %>% summarize(count = n()) #this will group by month, year, and count the total number of admissions
+ggplot(aamonth, aes(x = Month.Admitted, y = Year.Admitted, color = count)) + geom_col()
+#First I made the color the year admitted, and the bar chart made no sense. I swapped the color to indicate the count. It still looks really weird
+aamonth <- almshouse_admissions %>% group_by(Month.Admitted) %>% summarize(count = n())
+#I cut the year from the grouping-I think adding in year is too much data for a bar chart to effectively handle
+ggplot(aamonth, aes(x = Month.Admitted, y = count)) + geom_col()
+#this makes a usable bar chart: The least likely month for admission was January, and the most likely month for admission was November
 ```
 
 ### Line Charts
