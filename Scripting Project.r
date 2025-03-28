@@ -134,3 +134,31 @@ for (i in 1:nrow(ILTMetadata)) {
 #and I didn't need the else/next apparently so I deleted it
 #it worked BUT it downloaded every form of the file which is not ideal so I stopped it and added the filter function back
 #Filter function was not working earlier so I cut it. Please ignore the 10 versions of "Grammar of Irish" in here. 
+write.csv(ILTMetadata, "IrishLangTextsMetadata.csv")
+
+THE CODE 
+IrishLangTextsDB = data.frame()
+IrishLangTexts <- c("contributor" = "National Library of Scotland", "language" = "iri")
+ia_search(IrishLangTexts, num_results = 50) #the full 97 was getting away from me 
+IrishLangTextsDB <- ia_search(IrishLangTexts, num_results = 50)
+print(IrishLangTextsDB)
+IrishLangTextsmetadata <- data.frame()
+ia_search(IrishLangTexts, num_results = 50) %>% 
+ia_get_items() %>% 
+ia_metadata() %>% 
+filter(field == "language" & field == "title") %>%
+select(value)
+ILTMetadata <- ia_search(IrishLangTexts, num_results = 50) %>% ia_get_items() %>% ia_metadata() 
+ILTMetadata <- ILTMetadata %>% filter(field %in% c("language", "title", "year", "subject")) %>% select(id, field, value)
+ILTMetadata <- ILTMetadata %>% pivot_wider(names_from = field, values_from = value)
+dir.create("IrishLangDirectory")
+for (i in 1:nrow(ILTMetadata)) {
+    if (is.na(ILTMetadata$subject[i])) {
+        next 
+    }
+    if (ILTMetadata$subject[i] != "NA") {
+        ia_get_items() %>% ia_files() %>% ia_download(dir = "IrishLangDirectory", overwrite = FALSE) %>% glimpse()
+    } else {
+        next
+    }
+ }
