@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files>
+  <file name="__ia_thumb.jpg" source="original">
+    <mtime>1693201838</mtime>
+    <size>16216</size>
+    <md5>59ef6668766f0aca249ae85fbcb55982</md5>
+    <crc32>6207a642</crc32>
+    <sha1>c0c7d8bb9acb438fcb5ce0763d856e31a7053380</sha1>
+    <format>Item Tile</format>
+    <rotation>0</rotation>
+  </file>
+  <file name="grammarofirishla01joyc.djvu" source="derivative">
+    <format>DjVu</format>
+    <original>grammarofirishla01joyc_djvu.xml</original>
+    <md5>6109ceda1e57707af8f085f904f63fa1</md5>
+    <mtime>1225132942</mtime>
+    <size>3237779</size>
+    <crc32>38c3f272</crc32>
+    <sha1>d3ca433724032a82eaf91b9fd891de876e09c120</sha1>
+  </file>
+  <file name="grammarofirishla01joyc.gif" source="derivative">
+    <format>Animated GIF</format>
+    <original>grammarofirishla01joyc_jp2.zip</original>
+    <md5>8e2b110220c33f89f07c44b79460eb9c</md5>
+    <mtime>1225128285</mtime>
+    <size>352712</size>
+    <crc32>496d0e85</crc32>
+    <sha1>6b06ccdf1531060688c02474a849deeee6655a0a</sha1>
+  </file>
+  <file name="grammarofirishla01joyc.pdf" source="derivative">
+    <format>Text PDF</format>
+    <original>grammarofirishla01joyc_page_numbers.json</original>
+    <mtime>1699774142</mtime>
+    <size>6369704</size>
+    <md5>855b9bf1751ca75e55119e24b4f23cce</md5>
+    <crc32>a260dbdf</crc32>
+    <sha1>2c28c8afd206c0e36e9da62b1a824c07073bdffe</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_abbyy.gz" source="derivative">
+    <format>Abbyy GZ</format>
+    <original>grammarofirishla01joyc_jp2.zip</original>
+    <md5>aba2cbcf9cad0ed2c85a0aedecca465d</md5>
+    <mtime>1225132413</mtime>
+    <size>3740816</size>
+    <crc32>559478eb</crc32>
+    <sha1>f0c71798de80abd5221f8b427b405cb816c52595</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_archive.torrent" source="metadata">
+    <btih>2bf166682eed06520ce23c2b7a9cce054517469e</btih>
+    <mtime>1723711361</mtime>
+    <size>8209</size>
+    <md5>9e4d45e2a06570e13406baa029b3ba20</md5>
+    <crc32>126d152a</crc32>
+    <sha1>4a110cd2ac16d7147e285f48178363871ce798d4</sha1>
+    <format>Archive BitTorrent</format>
+  </file>
+  <file name="grammarofirishla01joyc_bw.pdf" source="derivative">
+    <format>Grayscale PDF</format>
+    <original>grammarofirishla01joyc_page_numbers.json</original>
+    <mtime>1699774143</mtime>
+    <size>5676464</size>
+    <md5>35107f1c24d45c5bfe5d4f404ac7615d</md5>
+    <crc32>708c7c11</crc32>
+    <sha1>2d7287c1d68efb11a919d08530631be219322717</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_chocr.html.gz" source="derivative">
+    <ocr_module_version>0.0.21</ocr_module_version>
+    <ocr_converted>abbyy-to-hocr 1.1.37</ocr_converted>
+    <format>chOCR</format>
+    <original>grammarofirishla01joyc_abbyy.gz</original>
+    <mtime>1699773675</mtime>
+    <size>2997363</size>
+    <md5>ef1a7a8b720fcbd51597f1fcde8f50fc</md5>
+    <crc32>258720f2</crc32>
+    <sha1>a6ff7dcdac818da56d838aefa6b40a5f05f8f302</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_cloth_detection.log" source="derivative">
+    <cloth_cover_detection_module_version>1.2</cloth_cover_detection_module_version>
+    <format>Cloth Cover Detection Log</format>
+    <original>grammarofirishla01joyc_scandata.xml</original>
+    <mtime>1699774664</mtime>
+    <size>779</size>
+    <md5>12d025f1d880dcc25d263e9b70b0f8d5</md5>
+    <crc32>37a393de</crc32>
+    <sha1>8c6c3649449b6881b6c90b28bb8ce82ebb69aa4a</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_dc.xml" source="original">
+    <format>Dublin Core</format>
+    <md5>11d8776b8df416037ce01363713ca481</md5>
+    <mtime>1649033581</mtime>
+    <size>625</size>
+    <crc32>4ea9c8c8</crc32>
+    <sha1>fb94e48eeed640a158580d8a442e612d184bc025</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_djvu.txt" source="derivative">
+    <format>DjVuTXT</format>
+    <original>grammarofirishla01joyc_djvu.xml</original>
+    <mtime>1699774089</mtime>
+    <size>262573</size>
+    <md5>6509aed85eb5f6539a8c57ad75d556bb</md5>
+    <crc32>e2a45535</crc32>
+    <sha1>b17746d9dd99ac170d8dc61eadba1581c5a488d5</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_djvu.xml" source="derivative">
+    <format>Djvu XML</format>
+    <original>grammarofirishla01joyc_hocr.html</original>
+    <mtime>1699773813</mtime>
+    <size>3261371</size>
+    <md5>c3f0ff7553f17312bdbe429d5f7ce0d0</md5>
+    <crc32>b5cf30c7</crc32>
+    <sha1>2c5f1efe31fb9da966f436d561edfb4c502f3bf0</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_files.xml" source="metadata">
+    <format>Metadata</format>
+    <md5>9e0b248991de9f9260415a2bb4a5d157</md5>
+    <summation>md5</summation>
+  </file>
+  <file name="grammarofirishla01joyc_hocr.html" source="derivative">
+    <hocr_char_to_word_module_version>1.2.0</hocr_char_to_word_module_version>
+    <hocr_char_to_word_hocr_version>1.1.45</hocr_char_to_word_hocr_version>
+    <ocr_module_version>0.0.21</ocr_module_version>
+    <ocr_converted>abbyy-to-hocr 1.1.37</ocr_converted>
+    <format>hOCR</format>
+    <original>grammarofirishla01joyc_chocr.html.gz</original>
+    <mtime>1699773787</mtime>
+    <size>6343623</size>
+    <md5>ff89752d8d2de665c4a02757e74b11c5</md5>
+    <crc32>0f590527</crc32>
+    <sha1>975a3a33649cd6083a7bf519e65185367b79f96a</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_hocr_pageindex.json.gz" source="derivative">
+    <hocr_pageindex_module_version>1.0.0</hocr_pageindex_module_version>
+    <hocr_pageindex_hocr_version>1.1.15</hocr_pageindex_hocr_version>
+    <format>OCR Page Index</format>
+    <original>grammarofirishla01joyc_hocr.html</original>
+    <mtime>1699773886</mtime>
+    <size>1875</size>
+    <md5>570ffea095727f4af8ebda366d0c6610</md5>
+    <crc32>575cbab9</crc32>
+    <sha1>bad6728479a40201a9ec1d302dfd8c31b4d3e79b</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_hocr_searchtext.txt.gz" source="derivative">
+    <hocr_fts_text_module_version>1.1.0</hocr_fts_text_module_version>
+    <hocr_fts_text_hocr_version>1.1.15</hocr_fts_text_hocr_version>
+    <word_conf_0_10>8993</word_conf_0_10>
+    <word_conf_11_20>8008</word_conf_11_20>
+    <word_conf_21_30>7850</word_conf_21_30>
+    <word_conf_31_40>6529</word_conf_31_40>
+    <word_conf_41_50>4606</word_conf_41_50>
+    <word_conf_51_60>2584</word_conf_51_60>
+    <word_conf_61_70>1013</word_conf_61_70>
+    <word_conf_71_80>352</word_conf_71_80>
+    <word_conf_81_90>161</word_conf_81_90>
+    <word_conf_91_100>289</word_conf_91_100>
+    <format>OCR Search Text</format>
+    <original>grammarofirishla01joyc_hocr.html</original>
+    <mtime>1699773947</mtime>
+    <size>88034</size>
+    <md5>0d54aec5500f76cb1bb7e74acf286e6e</md5>
+    <crc32>4590aa7b</crc32>
+    <sha1>d8f1671b114bd131ea119658c97dec388809156d</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_jp2.zip" source="derivative">
+    <format>Single Page Processed JP2 ZIP</format>
+    <original>grammarofirishla01joyc_orig_jp2.tar</original>
+    <md5>2a7502820b33bf86f6fc20b47469ba9e</md5>
+    <mtime>1225128251</mtime>
+    <size>43602978</size>
+    <crc32>3a55b4af</crc32>
+    <sha1>dc053172913a5d992db612ca96b5595812d93145</sha1>
+    <filecount>162</filecount>
+  </file>
+  <file name="grammarofirishla01joyc_marc.xml" source="original">
+    <format>MARC</format>
+    <md5>f3b9bf63daa36c8479d693d83e7f8189</md5>
+    <mtime>1224865188</mtime>
+    <size>2170</size>
+    <crc32>558fbb31</crc32>
+    <sha1>7f04a90e31216864834a793d1939cc8d3e91c9ef</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_meta.mrc" source="original">
+    <format>MARC Binary</format>
+    <md5>d0a1d2303dd4accb650c6e7a4198ca8b</md5>
+    <mtime>1224865188</mtime>
+    <size>626</size>
+    <crc32>c2c8420a</crc32>
+    <sha1>88c1cab99a4eaecdb0b402195192a288f2dad9cd</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_meta.xml" source="metadata">
+    <format>Metadata</format>
+    <mtime>1723711356</mtime>
+    <size>2589</size>
+    <md5>ae9fad33206151b88b8e4f4892cb5e31</md5>
+    <crc32>2d144645</crc32>
+    <sha1>b6a304910ea28cd732c2df66c3e961fae556d1d0</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_metasource.xml" source="original">
+    <format>MARC Source</format>
+    <md5>0f2d26e5d23c7e184a395ef5c4c89237</md5>
+    <mtime>1224865188</mtime>
+    <size>436</size>
+    <crc32>7497c969</crc32>
+    <sha1>53a31edd41507ce2e030e6cfacd0993902fe9968</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_orig_jp2.tar" source="original">
+    <format>Single Page Original JP2 Tar</format>
+    <md5>f8f136b7ceb60bf37ccfe72fbdcf71df</md5>
+    <mtime>1225120467</mtime>
+    <size>89456640</size>
+    <crc32>58891439</crc32>
+    <sha1>607595450d1dee0358e51ba921f9543a80b0ba2c</sha1>
+    <filecount>162</filecount>
+  </file>
+  <file name="grammarofirishla01joyc_page_numbers.json" source="derivative">
+    <hocr_pagenumber_module_version>1.0.3</hocr_pagenumber_module_version>
+    <hocr_pagenumber_hocr_version>1.1.54</hocr_pagenumber_hocr_version>
+    <hocr_pagenumber_confidence>90</hocr_pagenumber_confidence>
+    <format>Page Numbers JSON</format>
+    <original>grammarofirishla01joyc_hocr.html</original>
+    <mtime>1699774056</mtime>
+    <size>25749</size>
+    <md5>e5d409627671604a8ed8b263d412ed78</md5>
+    <crc32>eda22366</crc32>
+    <sha1>ef123beca2b4ecb3dec2451350e89a969acf9fdd</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_reviews.xml" source="original">
+    <mtime>1351938829</mtime>
+    <size>817</size>
+    <md5>3288b70fecbf1abe6191bb75ac15a6f3</md5>
+    <crc32>2e55906c</crc32>
+    <sha1>1992821fd5d69ed7546abdcdeecbff3ca24d78bf</sha1>
+    <format>Metadata</format>
+  </file>
+  <file name="grammarofirishla01joyc_scandata.xml" source="original">
+    <format>Scandata</format>
+    <md5>05c6f3f7e826211977c9477280599746</md5>
+    <mtime>1699774664</mtime>
+    <size>83713</size>
+    <crc32>3e8621b1</crc32>
+    <sha1>7b07de0933a1793fd0d0ad917b9562502de21614</sha1>
+  </file>
+  <file name="grammarofirishla01joyc_scanfactors.xml" source="derivative">
+    <format>Scan Factors</format>
+    <original>grammarofirishla01joyc_djvu.xml</original>
+    <md5>eb169c132fcd9270691fd731e5036573</md5>
+    <mtime>1225133031</mtime>
+    <size>312</size>
+    <crc32>550e4822</crc32>
+    <sha1>3bddfc47315de5370995034e0b4773cfc294aac5</sha1>
+  </file>
+</files>

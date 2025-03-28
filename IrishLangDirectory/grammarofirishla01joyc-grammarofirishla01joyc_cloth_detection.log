@@ -1,0 +1,7 @@
+12-Nov-23 07:37:43 INFO     Start cloth cover detector module version 1.2!
+12-Nov-23 07:37:43 INFO     sourceFile(scandata) : '/item/grammarofirishla01joyc_scandata.xml' -> targetFile(log-file) '/item/grammarofirishla01joyc_cloth_detection.log'
+12-Nov-23 07:37:43 INFO     The 'jp2' archive was found! Path to file: '/item/grammarofirishla01joyc_jp2.zip'
+12-Nov-23 07:37:44 INFO     Analysis of cover page with leafNum 1: 'is cloth' - False, 'edge level' - 34.36148215090236
+12-Nov-23 07:37:44 INFO     Analysis of cover page with leafNum 156: 'is cloth' - True, 'edge level' - 1.0897384311818428
+12-Nov-23 07:37:44 INFO     Save new scandata with tag 'clothCover' in /item/grammarofirishla01joyc_scandata.xml
+12-Nov-23 07:37:44 INFO     Successful finish cloth-cover detector !

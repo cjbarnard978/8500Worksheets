@@ -107,5 +107,30 @@ ILTMetadata <- ILTMetadata %>% pivot_wider(names_from = field, values_from = val
 #okay, original loop idea isn't conducive to my metadata collection. I am going to instead
 #write a loop to filter out texts that have "NA" as the subject, and download what's left. 
 #I'm going to try without copilot first. I can at least write a loop to get rid of the NAs. 
+#make an accessible directory first
+dir.create("IrishLangDirectory")
+for (i in 1:nrow(ILTMetadata)) {
+    if (is.na(ILTMetadata$subject[i])) {
+        next 
+    }
+    if (ILTMetadata$subject[i] != "NA") {
+        ia_get_items() %>% ia_files() %>% ia_download(dir = "IrishLangDirectory", overwrite = FALSE) %>% glimpse()
+    } else {
+        next
+    }
+ }
+#this didn't work no matter what I clicked: error message: as.character(text): cannot coer ce type 'closure' to vector of type 'character'
+#removed [i] from ia_get_items. the loop needs to pull the item id and make it a variable THEN put that in ia get items 
 
-
+for (i in 1:nrow(ILTMetadata)) {
+    if (is.na(ILTMetadata$subject[i])) {
+        next
+    }
+    if (ILTMetadata$subject[i] != "NA") {
+        item_id <-ILTMetadata$id[i] 
+        ia_get_items(item_id) %>% ia_files() %>% filter(type == "txt") %>% ia_download(dir = "IrishLangDirectory", overwrite = FALSE) %>% glimpse()
+    }
+}
+#and I didn't need the else/next apparently so I deleted it
+#it worked BUT it downloaded every form of the file which is not ideal so I stopped it and added the filter function back
+#Filter function was not working earlier so I cut it. Please ignore the 10 versions of "Grammar of Irish" in here. 
