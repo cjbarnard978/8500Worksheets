@@ -74,5 +74,38 @@ for (i in seq_along(NLS_metadata$title)) {
     if (language)
 }
 #STARTING OVER FROM THE BEGINNING 
+IrishLangTextsDB = data.frame()
+IrishLangTexts <- c("contributor" = "National Library of Scotland", "language" = "iri")
+ia_search(IrishLangTexts, num_results = 50) #the full 97 was getting away from me 
+IrishLangTextsDB <- ia_search(IrishLangTexts, num_results = 50)
+print(IrishLangTextsDB) #saving to a dataframe involved using copilot to research how
+#now I want to write a loop that only pulls and stores metadata for texts that are in English AND Irish 
 
-x
+for (i in 1:length(ia_get_items(IrishLangTexts))) {
+    if [i]("language" == "eng" & "language" == "iri")) {
+        IrishLangTexts %>% ia_get_items(i) %>% ia_metadata %>% select(value)
+    }
+    if (IrishLangTexts[i]("language" != "eng" | "language" != "iri")) {
+        next
+       }
+       print(IrishLangTexts[i])
+    }
+#this loop did not work - asked copilot "write metadata loop"
+#1) new dataframe 
+IrishLangTextsmetadata <- data.frame()
+#2) then retrieve the metadata entirely using the webscraping script?
+ia_search(IrishLangTexts, num_results = 50) %>% 
+ia_get_items() %>% 
+ia_metadata() %>% 
+filter(field == "language" & field == "title") %>%
+select(value)
+#no dataframe or tibble no matter what I did so I asked copilot. 
+#I was trying to do too much at once. Copilot says break it up into chunks. 
+ILTMetadata <- ia_search(IrishLangTexts, num_results = 50) %>% ia_get_items() %>% ia_metadata() #chunk one
+ILTMetadata <- ILTMetadata %>% filter(field %in% c("language", "title", "year", "subject")) %>% select(id, field, value) #this filters: I think this uses more modern code that hasn't degraded. I tried without the select function first and it failed: the select function creates the columns needed to pivot in the next step! 
+ILTMetadata <- ILTMetadata %>% pivot_wider(names_from = field, values_from = value)
+#okay, original loop idea isn't conducive to my metadata collection. I am going to instead
+#write a loop to filter out texts that have "NA" as the subject, and download what's left. 
+#I'm going to try without copilot first. I can at least write a loop to get rid of the NAs. 
+
+
