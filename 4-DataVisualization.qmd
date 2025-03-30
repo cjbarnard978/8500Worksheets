@@ -212,7 +212,10 @@ ggplot(city.expenditures, aes(x = city, y = total_expenditures)) + geom_col(aes(
 
 (@) Using the gayguides data can you select 5 types of locations and chart the number of each type between 1965 and 1980? 
 ```{r}
-
+#Bars/Clubs, Theatre, Religious Institution, Baths, Organizations
+gglocations <- gayguides %>% group_by(type, Year) %>% filter( Year == 1965:1980) %>% filter(type == "Bars/Clubs" | type == "Theatre" | type == "Religious Institution" | type == "Baths" | type == "Organizations") %>% summarize(count = n())
+ggplot(gglocations, aes(x = count, y = Year)) + geom_line(aes(group = '')) + xlim(1, 250) + facet_wrap(~type)
+#xlim and ylim can't be zero-it throws an error-but this seems to cut off my data. 
 ```
 
 (@) Using this recreation dataset from last week, can you find the average number of volunteer and paid workers over time? 
