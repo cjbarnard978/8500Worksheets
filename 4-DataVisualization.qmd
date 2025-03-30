@@ -205,7 +205,9 @@ ggplot(gg.byyear, aes(x = Year, y = count)) +
 
 (@) Using the state recreation data, can you create a chart that outlines the total expenditures in South Carolina by city?
 ```{r}
+city.expenditures <-recreational.data %>% group_by(state, city, total_expenditures) %>% filter(state == "SC") %>% summarize(count = n())
 
+ggplot(city.expenditures, aes(x = city, y = total_expenditures)) + geom_col(aes(group = '')) + facet_wrap(~city)
 ```
 
 (@) Using the gayguides data can you select 5 types of locations and chart the number of each type between 1965 and 1980? 
