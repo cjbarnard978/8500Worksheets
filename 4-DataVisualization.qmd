@@ -221,7 +221,7 @@ ggplot(gglocations, aes(x = count, y = Year)) + geom_line(aes(group = '')) + xli
 (@) Using this recreation dataset from last week, can you find the average number of volunteer and paid workers over time? 
 ```{r}
 rec.workers <- read.csv("https://raw.githubusercontent.com/regan008/DigitalMethodsData/main/raw/RecreationData-Wide.csv")
-
+rec.workersavg <- rec.workers %>% group_by(type_of_worker, X1930, X1935, X1940, X1945) %>% summarize(count = n()) 
 
 ```
 
