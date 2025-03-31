@@ -236,7 +236,7 @@ ggplot(yearandmonth, aes(x = Month.Admitted, y = Year.Admitted)) + geom_col() + 
 ```
 
 (@) Plot 1 explanation: 
->
+>I wanted to see how monthly and yearly admissions changed over time.
 
 (@) Plot 2
 ```{r}
@@ -246,7 +246,7 @@ ggplot(UtahChangeOverTime, aes(x = Year, y = count)) + geom_line() + facet_wrap(
 ```
 
 (@) Plot 2 explanation: 
->
+>I wanted to see where and when queer people congregated in Utah, which is a very religious state. 
 
 (@) Plot 3. For this one, try a different kind of plot. [Check out a useful gallery here.](https://github.com/regan008/DigitalMethodsData/blob/main/raw/RecreationData-Wide.csv)
 (For this week, avoid choosing a map. We'll talk more about maps and geographic data over the next two weeks.)
@@ -257,4 +257,4 @@ ggplot(ageoccucorrelation, aes(x = Occupation, y = count)) + geom_bar(stat = "id
 ```
 
 (@) Plot 3 explanation: 
->
+>This one took a lot of manipulating and consideration to create, but eventually I created a data representation that correlated age and occupation for women on the voting registry in Boston. I wanted to explore what occupations younger women sought out most frequently. I narrowed to 5 occupations so that the graph was readable, and shortened the age range to under 35. I'm not entirely happy with this graph-it feels very limited. The youngest age, 20, was unlikely to be employed at all. Overall, housewife is the most common occupation for women under 35, followed by Clerk. Women in their early 20s were more likely to be employed outside of the home-you could make the inference based on the graphs that the average age for marriage and leaving the workforce is around 22-24, because that is when "housewife" outpaces other employment. 
