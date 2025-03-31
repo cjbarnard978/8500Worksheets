@@ -241,6 +241,8 @@ ggplot(yearandmonth, aes(x = Month.Admitted, y = Year.Admitted)) + geom_col() + 
 (@) Plot 2
 ```{r}
 data(gayguides)
+UtahChangeOverTime <- gayguides %>% group_by(state, Year, type) %>% filter(state == "UT") %>% summarize(count = n())
+ggplot(UtahChangeOverTime, aes(x = Year, y = count)) + geom_line() + facet_wrap(~type)
 ```
 
 (@) Plot 2 explanation: 
