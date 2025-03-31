@@ -246,7 +246,7 @@ ggplot(UtahChangeOverTime, aes(x = Year, y = count)) + geom_line() + facet_wrap(
 ```
 
 (@) Plot 2 explanation: 
->I wanted to see where and when queer people congregated in Utah, which is a very religious state. 
+>I wanted to see where and when queer people congregated in Utah, which is a very religious state. I was interested in seeing if Mormon beliefs, like an avoidance of alcohol, affected where and how queer people congregated. For example, were there fewer gay friendly bars in Utah than say religious institutions or bookstores? It seems as though Mormon avoidance of alcohol and premarital sex did not affect the lives of queer Utahns-Bars and cruising areas are the most frequent locations that appear, and increase over time from 1965 to 1985. Religious institutions also increase over time from 1975 to 1985: It would be interesting to examine primary sources or the archive to see if this correlates with an increased demonstration of tolerance toward queer people in the state.
 
 (@) Plot 3. For this one, try a different kind of plot. [Check out a useful gallery here.](https://github.com/regan008/DigitalMethodsData/blob/main/raw/RecreationData-Wide.csv)
 (For this week, avoid choosing a map. We'll talk more about maps and geographic data over the next two weeks.)
