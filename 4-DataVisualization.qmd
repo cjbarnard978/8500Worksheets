@@ -230,7 +230,9 @@ In the slots below use the datasets for class (or a dataset of your choice) to c
 
 (@) Plot 1
 ```{r}
-
+data(almshouse_admissions)
+yearandmonth <- almshouse_admissions %>% group_by(Year.Admitted, Month.Admitted, YearDischarged, MonthDischarged) %>% summarize(count = n())
+ggplot(yearandmonth, aes(x = Month.Admitted, y = Year.Admitted)) + geom_col() + facet_wrap(~YearDischarged)
 ```
 
 (@) Plot 1 explanation: 
@@ -238,7 +240,7 @@ In the slots below use the datasets for class (or a dataset of your choice) to c
 
 (@) Plot 2
 ```{r}
-
+data(gayguides)
 ```
 
 (@) Plot 2 explanation: 
@@ -247,7 +249,7 @@ In the slots below use the datasets for class (or a dataset of your choice) to c
 (@) Plot 3. For this one, try a different kind of plot. [Check out a useful gallery here.](https://github.com/regan008/DigitalMethodsData/blob/main/raw/RecreationData-Wide.csv)
 (For this week, avoid choosing a map. We'll talk more about maps and geographic data over the next two weeks.)
 ```{r}
-
+data(BostonWomenVoters)
 ```
 
 (@) Plot 3 explanation: 
