@@ -236,7 +236,7 @@ ggplot(yearandmonth, aes(x = Month.Admitted, y = Year.Admitted)) + geom_col() + 
 ```
 
 (@) Plot 1 explanation: 
->I wanted to see how monthly and yearly admissions changed over time.
+>I wanted to see how monthly and yearly admissions changed over time. As th 19th century started and progessed and immigration increased, did almshouse use increase or decrease? According to the graphs, the first 5 or so years of the 19th century are when the almshouses are used most consistently and frequently. After 1804 almshouse use drops off almost entirely, which I find very interesting. Why did that happen? Did another almshouse open and surpass this one? Did the sytem of poor relief change dramatically?
 
 (@) Plot 2
 ```{r}
