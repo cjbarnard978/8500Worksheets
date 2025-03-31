@@ -252,6 +252,8 @@ ggplot(UtahChangeOverTime, aes(x = Year, y = count)) + geom_line() + facet_wrap(
 (For this week, avoid choosing a map. We'll talk more about maps and geographic data over the next two weeks.)
 ```{r}
 data(BostonWomenVoters)
+ageoccucorrelation <- BostonWomenVoters %>% group_by(Age, Occupation) %>% filter(Occupation == "Housewife" | Occupation == "School teacher" | Occupation == "Clerk" | Occupation == "Student") %>% filter(Age < 35) %>% summarize(count = n())
+ggplot(ageoccucorrelation, aes(x = Occupation, y = count)) + geom_bar(stat = "identity") + facet_wrap(~Age)
 ```
 
 (@) Plot 3 explanation: 
