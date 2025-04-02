@@ -130,7 +130,8 @@ head(sotu_bigrams$bigram)
 
 (@) Use `unest_tokens()` to create tri-grams. 
 ```{r}
-
+sotu_trigrams <- sotu_whole %>% unnest_tokens(trigram, text, token = "ngrams", n = 3)
+head(sotu_trigrams$trigram)
 ```
 
 ### Stopwords
