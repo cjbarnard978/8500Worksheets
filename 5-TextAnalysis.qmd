@@ -248,7 +248,7 @@ sotu.length <- tidy_sotu %>%
 
 (@) Think back to the metadata that we loaded about these speeches. Why are the STOU addresses for more modern president's shorter than others? (For example Bush vs Teddy Roosevelt)
 
->
+>Term limits are made mandatory after FDR dies during his 4th, so that's part of it. It looks like more modern presidents are also less likely to get elected for a second term: Teddy Roosevelt served two, but Bush Sr. served one. 
 
 (@) Filter the dataset to address this discrepancy and the recreate these statistics: 
 ```{r}
