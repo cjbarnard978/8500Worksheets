@@ -243,6 +243,7 @@ sotu.length <- tidy_sotu %>%
   group_by(president) %>% 
   summarize(avg_words = mean(n)) %>% 
   arrange(desc(avg_words))
+  #Taft had the longest and Adams had the shortest.
 ```
 
 (@) Think back to the metadata that we loaded about these speeches. Why are the STOU addresses for more modern president's shorter than others? (For example Bush vs Teddy Roosevelt)
