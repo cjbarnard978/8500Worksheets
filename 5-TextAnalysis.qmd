@@ -252,9 +252,19 @@ sotu.length <- tidy_sotu %>%
 
 (@) Filter the dataset to address this discrepancy and the recreate these statistics: 
 ```{r}
+sotu.length2 <- tidy_sotu %>% group_by(president, years_active) %>% mutate(print(range(tidy_sotu$years_active))) %>% filter() %>% count(president, doc_id)
+??filter()
+#asking copilot starts now" asked how to find the range in column: years_active. looks like I need to add na.rm = TRUE and give the mutate column a name. 
+sotu.length2 <- tidy_sotu %>% group_by(president, years_active) %>% mutate(years_range = print(range(tidy_sotu$years_active, na.rm = TRUE)))
+#error: years_range must be size 10462 or 1 not 2.
+#I should be SUBTRACTING not finding the range: copilot says to find diff(range) to subtract within a column using summarize, not mutate
+sotu.length2 <-tidy_sotu %>% group_by(president, years_active) %>% summarize(years_range = diff(range(years_active, na.rm = TRUE))) %>% count(president, doc_id)
+#new error: in argument: years_range = diff(range(years_active, na.rm = TRUE)) -> in group 1: president = Abraham Lincoln, years_active = 1861_1865. Copilot says that the console is interpreting the years_active column not as years but as a string: separate the columns out into start year and end year, then subtract within summarize. 
+sotu.length2 <- tidy_sotu %>% separate(years_active, into = c("year_start", "year_end"), sep = "-", convert = TRUE) %>% group_by(president) %>% summarize(term.length = year_end - year_start, .groups = "drop")
+#unexpected symbol error? Copilot found an extra space.
+sotu.length2 <- tidy_sotu %>% separate(years_active, into = c("year_start", "year_end"), sep = "-", convert = TRUE) %>% group_by(president) %>% summarize(term.length = year_end - year_start) %>% filter(term.length == 4) 
 
 ```
-
 ### Term Frequency
 Often, the raw frequency of a term is not as useful as relative frequency. In other words, how often that word appears relative to the total number of words in a text. This ratio is called **term frequency**. 
 
