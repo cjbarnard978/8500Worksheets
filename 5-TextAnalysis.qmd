@@ -197,8 +197,19 @@ tidy_sotu <- sotu_whole %>%
 ```
 (@) Before we move forward, take a minute a describe the chunk of code you just ran. What does each section do and how does it reflect the workflow for a topic modeling project? What are the important steps that are unique to topic modeling? 
 
->
-
+>meta <- as.data.frame(sotu_meta): turns the metadata from the State of the Union package into an R readable dataframe
+file_paths <- sotu_dir(dir = "sotu_files"): makes a directory to store the files in the package in an accessible way
+sotu_texts <- readtext(file_paths): loads the texts into R. 
+sotu_whole <- 
+  sotu_meta %>%  
+  arrange(president) %>% # sort metadata
+  bind_cols(sotu_texts) %>% # combine with texts
+  as_tibble() 
+The first chunk of code takes the text files and metadata from the SOTU package and turns them into R readable and usable materials: it turns them into numbers, essentially. 
+tidy_sotu <- sotu_whole %>%
+  unnest_tokens(word, text) %>%: tokenizes the full text into single words to make counting and analyzing easier
+  anti_join(stop_words): filters out the stop words 
+The second chunk of text is what is unique to text analysis: it takes the texts themselves and turns them into machine readable variables like single words. It also allows for the filtering out of words that are common in all texts to avoid skewing the data. 
 
 The most basic kind of analysis we might be interested in doing is counting words. We can do that easily using the `count()` function: 
 ```{r}
