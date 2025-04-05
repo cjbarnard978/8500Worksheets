@@ -262,9 +262,11 @@ sotu.length2 <-tidy_sotu %>% group_by(president, years_active) %>% summarize(yea
 #new error: in argument: years_range = diff(range(years_active, na.rm = TRUE)) -> in group 1: president = Abraham Lincoln, years_active = 1861_1865. Copilot says that the console is interpreting the years_active column not as years but as a string: separate the columns out into start year and end year, then subtract within summarize. 
 sotu.length2 <- tidy_sotu %>% separate(years_active, into = c("year_start", "year_end"), sep = "-", convert = TRUE) %>% group_by(president) %>% summarize(term.length = year_end - year_start, .groups = "drop")
 #unexpected symbol error? Copilot found an extra space.
-sotu.length2 <- tidy_sotu %>% separate(years_active, into = c("year_start", "year_end"), sep = "-", convert = TRUE) %>% group_by(president) %>% summarize(term.length = year_end - year_start) %>% filter(term.length == 4) 
-
+sotu.length2 <- tidy_sotu %>% separate(years_active, into = c("year_start", "year_end"), sep = "-", convert = TRUE) %>% group_by(president, doc_id) %>% summarize(term.length = year_end - year_start) %>% filter(term.length == 4) 
+sotu.mean <- sotu.length2 %>% count(president, doc_id) %>% summarize(avg_words = mean(n)) %>% arrange(desc(avg_words))
+#why am I getting NA. Asking copilot why. Noticed I forgot the count function and to keep the doc_id column in before Copilot's answer made sense. added those back in. 
 ```
+
 ### Term Frequency
 Often, the raw frequency of a term is not as useful as relative frequency. In other words, how often that word appears relative to the total number of words in a text. This ratio is called **term frequency**. 
 
