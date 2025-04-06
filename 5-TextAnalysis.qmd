@@ -294,7 +294,14 @@ tidy_sotu %>%
 ```
 (@) The code above is commented to help you follow it. Walk through the code above, and explain what each line does in your own words. If its a function you are unfamiliar with, look up the documentation.
 
-> 
+> tidy_sotu %>% (pipes a specific dataset into the line of code)
+  count(president, word)  %>% (counts the tokenized dataset: each word is a token and it counts the number of words spoken or written by each president )
+  group_by(president) %>% (creates a dataset that groups the presidents and eliminates the dataset columns that are unnecessary to the argument)
+  mutate(n_tot = sum(n), 
+         term_freq = n/n_tot) %>% () (creates a new column that finds the word frequency by dividing the word (1) by the term frequency or number of times a word appears)
+  arrange(desc(term_freq)) %>% (arranges the percentages based on the highest frequency)
+  top_n(1) %>%  (selects the top row)
+  print(n = Inf) (this prints all the rows of the new dataset that counts words and calculates frequency)
 
 ### TF-IDF
 
