@@ -347,7 +347,6 @@ lincolntfidf <- tidy_sotu %>% filter(president == "Abraham Lincoln") %>% count(w
 Co-occurrence gives us a sense of words that appear in the same text, but not necessarily next to each other. It shows words that are likely to co-occur. Note that this is different than topic modeling, which we'll discuss next week. 
 
 For this section we will make use of the `widyr` package. The function which helps us do this is the `pairwise_count()` function. It lets us count common pairs of words co-appearing within the same speech. This function might take a second as the resulting data frame will be incredibly large.
-
 ```{r}
 sotu_word_pairs <- sotu_whole %>% 
   mutate(speech_end = word(text, -5000, end = -1)) %>%  # extract last 100 words
@@ -358,7 +357,7 @@ sotu_word_pairs <- sotu_whole %>%
 head(sotu_word_pairs)
 ```
 
-Now we have a list of words that appear near each other in the text as well as the frequency. Once again this dataset is far too large to look at in a data frame. Instead, we'll create a network graph that shows us the relationships between words for any words that appear more than 200 times. I chose 200 after looking at the above dataset and seeing that the highest count was 239. You want the network graph to be manageable and not too large. 
+Now we have a list of words that appear near each other in the text as well as the frequency. Once again this dataset is far too large to look at in a data frame. Instead, we'll create a network graph that shows us tdhe relationships between words for any words that appear more than 200 times. I chose 200 after looking at the above dataset and seeing that the highest count was 239. You want the network graph to be manageable and not too large. 
 ```{r}
 library(igraph)
 library(ggraph)
@@ -375,7 +374,7 @@ sotu_word_pairs %>%
 ```
 (@) Create a network graph that shows the relationship between words that appear between 125 and 175 times.
 ```{r}
-
+sotu_word_pairs %>% filter(n == 125:175) %>% graph_from_data_frame() %>% ggraph(layout = "fr") + geom_edge_link(aes(edge_alpha = n, edge_width = n, edge_colour = "purple")) + geom_node_point(size = 5) + geom_node_text(aes(label = name), repel = TRUE, point.padding = unit(0.2, "lines")) + theme_void()
 ```
 
 ## Analyzing Historical Journals
