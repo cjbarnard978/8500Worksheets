@@ -340,7 +340,7 @@ sotu.tf.idf %>% arrange(desc(tf_idf))
 (@) Pick a president who served more than one term. Filter the dataset and generate both raw word counts and tf-idf scores for that president. What words are most significant in each method? Why and what does that tell you about that president and their administration?  
 
 ```{r}
-
+lincolntfidf <- tidy_sotu %>% filter(president == "Abraham Lincoln") %>% count(word, doc_id, sort = TRUE) %>% bind_tf_idf(word, doc_id, n)
 ```
 
 ### Co-Occurance
