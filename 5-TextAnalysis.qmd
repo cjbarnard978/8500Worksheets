@@ -420,5 +420,8 @@ Write a text analysis script that explores and asks questions of the texts. At t
 TWCmetadata <- read.csv("WomanCitizenMetadata.csv")
 download.file("https://github.com/regan008/8510-TextAnalysisData/raw/refs/heads/main/TheWomanCitizen.zip", "TheWomanCitizen.zip")
 unzip("TheWomanCitizen.zip")
-TWCfiles <- readtext(paste(getwd(), "/txt/*.txt", sep=""))
+
+TWCfiles <- readtext(paste(getwd(), "/TheWomanCitizen/*.txt", sep=""))
+TWCfull <- TWCmetadata %>% full_join(TWCfiles, by = join_by("filename" == "doc_id"))
+
 ```
