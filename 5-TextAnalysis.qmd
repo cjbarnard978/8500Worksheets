@@ -406,9 +406,9 @@ token.mb <- whole.mb %>% unnest_tokens(word, text)
 token.mb <- token.mb %>% anti_join(stop_words)
 #filter by words "man" and "woman"
 token.mb.filtered <- token.mb %>% filter(word %in% c("man", "woman"))
-#now I want to find the TF_IDF and then create a visualization 
-token.mb.filtered %>% count(doc_id, word, sort = TRUE) %>% bind_tf_idf(word, doc_id, n)
-
+#now I want to arrange by the most frequent appearances of the word woman and man
+mb.gendered <- token.mb.filtered %>% count(doc_id, word) %>% arrange(desc(n))
+#The word "woman" appears most frequently in 1917, which is when the US entered WW1 and it was significantly more important for women to become able bodied and very physically fit: they were needed in the workforce as men joined the military
 ```
 
 
