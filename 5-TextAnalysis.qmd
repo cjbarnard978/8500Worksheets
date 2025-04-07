@@ -430,3 +430,5 @@ TWCfiltered <- TWCtokenized %>% filter(word == "cents" | word == "price" | word 
 TWCgraphable <- as.data.frame(TWCfiltered)
 TWCgraphable %>% graph_from_data_frame() %>% ggraph(layout = "fr") + geom_edge_link(aes(edge_alpha = n, edge_width = n, edge_colour = "purple")) + geom_node_point(size = 5) + geom_node_text(aes(label = name), repel = TRUE, point.padding = unit(0.2, "lines")) + theme_void()
 ```
+
+This did less than I was expecting it to. What it did demonstrate is that advertisements were more subtle: very little about spending money, prices, or cost shows up in relevance to the word advertisement. It's possible this conclusion is related more to OCR error or varying spellings but it is interesting to consider as an argument. The word cents appears most often, which demonstrates that goods were cheaper. This is not a groundbreaking discovery but does demonstrate some degree of historical accuracy in the network. I'm kind of disappointed in the boring outcome. 
