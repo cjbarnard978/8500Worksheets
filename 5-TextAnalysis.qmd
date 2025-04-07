@@ -395,7 +395,21 @@ mb <- readtext(paste(getwd(), "/txt/*.txt", sep=""))
 ```
 
 (@) Add code chunks below and intersperse text to explain what you are doing and why.
+Question: How "gendered" is the language that appears in "Mind and Body"? How often does the word "man" appear vs the word "woman"?
 
+```{r}
+#first I want to join the metadata and mb dataframes: I'll do this using doc_id in mb and Filename in metadata 
+whole.mb <- mb %>% full_join(metadata, by = join_by("doc_id" == "Filename"), keep = TRUE)
+#Now I want to tokenize by word 
+token.mb <- whole.mb %>% unnest_tokens(word, text)
+#next to remove stopwords
+token.mb <- token.mb %>% anti_join(stop_words)
+#filter by words "man" and "woman"
+token.mb.filtered <- token.mb %>% filter(word %in% c("man", "woman"))
+#now I want to find the TF_IDF and then create a visualization 
+token.mb.filtered %>% count(doc_id, word, sort = TRUE) %>% bind_tf_idf(word, doc_id, n)
+
+```
 
 
 
