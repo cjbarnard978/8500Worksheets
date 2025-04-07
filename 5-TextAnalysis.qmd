@@ -412,10 +412,13 @@ mb.gendered <- token.mb.filtered %>% count(doc_id, word) %>% arrange(desc(n))
 ```
 
 
-
-
-
 (@) Choose one of the datasets from this repository or use one of your own: https://github.com/regan008/8510-TextAnalysisData. Note that there are both zip files with .txt files as well as separate metadata files for each publication in this repo. 
 
 Write a text analysis script that explores and asks questions of the texts. At the end write a summary that analyzes the results you found. Be sure to rely on your historical knowledge. What can we learn from applying the strategies you've learned in this worksheet to analyze these documents?
 
+```{r}
+TWCmetadata <- read.csv("WomanCitizenMetadata.csv")
+download.file("https://github.com/regan008/8510-TextAnalysisData/raw/refs/heads/main/TheWomanCitizen.zip", "TheWomanCitizen.zip")
+unzip("TheWomanCitizen.zip")
+TWCfiles <- readtext(paste(getwd(), "/txt/*.txt", sep=""))
+```
