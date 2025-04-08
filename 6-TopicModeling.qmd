@@ -104,6 +104,8 @@ ac.top.terms %>%
 (@) Can you adjust the code above to show the top 10 words from just one topic?
 ```{r}
 ac.topic.one <- ac.top.terms %>% arrange(desc(beta)) %>% group_by(topic) %>% filter(topic == "1") %>% slice(1:10)
+
+ac.topic.one %>% mutate(term = reorder_within(term, beta, topic)) %>% ggplot(aes(beta, term, fill = factor(topic))) + geom_col(show.legend = FALSE) + geom_col(show.legend = FALSE)
 ```
 
 Another useful way to look at the words in each topic is by visualizing them as a wordcloud.
