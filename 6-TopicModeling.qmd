@@ -176,6 +176,7 @@ MBldacustom <- LDA(MBcustom, k = 25, control = list(seed = 12345))
 MBldacustom
 topics.MB <- tidy(MBldacustom, matrix = "beta") %>% arrange(desc(beta))
 head(topics.MB) 
+#after creating a custom stopword list, the most frequently occuring word is "arms"-which suggests that early physical education privileged upper body strength. It's possible this is because early physical education was designed toward improving the physical strength needed for manual labor in factories and on farms, which necessitated good upper body strength. This is a more descriptive model-it does not prioritize words that could mean several things in several contexts such as directional words or descriptions of the content. 
 ```
 
 (@) Can you create a topic model for just the documents in the 1920s? How does that change the model? 
