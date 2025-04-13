@@ -161,11 +161,21 @@ MBfull <- full_join(mb.metadata, MBtexts, by = c("Filename" = "doc_id")) %>% as_
 MBfiltered <- MBfull %>% unnest_tokens(word, text) %>% filter(str_detect(word, "[a-z']$")) %>% anti_join(stop_words)
 MBfilteredwords <- MBfiltered %>% count(Filename, word) %>% cast_dtm(Filename, word, n)
 MBlda <- LDA(MBfilteredwords, k = 25, control = list(seed = 12345))
+MBlda
+topics.MB <- tidy(MBlda, matrix = "beta") %>% arrange(desc(beta))
+head(topics.MB) 
 ```
 
 (@) What happens if you create a custom stopword list? How does this change the model?
 ```{r}
-
+#Mind and Body is about physical education, so I want to remove those words since they're going to appear in almost every topic and could skew the data. I also want to remove the words mind and body to make sure I filter out the titles, as well as directional words like right and left which also seem to appear in almost every topic. 
+MBstopwords <- data.frame(word = c("mind", "body", "physical", "education", "right", "left"))
+MBfilteredcustom <- MBfull %>% unnest_tokens(word, text) %>% filter(str_detect(word, "[a-z']")) %>% anti_join(stop_words) %>% anti_join(MBstopwords)
+MBcustom <- MBfilteredcustom %>% count(Filename, word) %>% cast_dtm(Filename, word, n)
+MBldacustom <- LDA(MBcustom, k = 25, control = list(seed = 12345))
+MBldacustom
+topics.MB <- tidy(MBldacustom, matrix = "beta") %>% arrange(desc(beta))
+head(topics.MB) 
 ```
 
 (@) Can you create a topic model for just the documents in the 1920s? How does that change the model? 
