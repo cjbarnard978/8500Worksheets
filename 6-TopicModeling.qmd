@@ -156,7 +156,9 @@ unzip("MB.zip")
 # Metadata that includes info about each issue.
 mb.metadata <- read.csv("https://raw.githubusercontent.com/regan008/8510-TextAnalysisData/main/mb-metadata.csv")
 file_paths <- system.file("txt 2/")
-MBtexts <- readtext(paste("txt 2", "*.txt", sep = ""))
+MBtexts <- readtext(paste("txt 2/", "*.txt", sep=""))
+MBfull <- full_join(mb.metadata, MBtexts, by = c("Filename" = "doc_id")) %>% as_tibble()
+
 ```
 
 (@) What happens if you create a custom stopword list? How does this change the model?
