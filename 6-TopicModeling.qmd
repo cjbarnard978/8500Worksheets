@@ -155,6 +155,8 @@ unzip("MB.zip")
 ```{r}
 # Metadata that includes info about each issue.
 mb.metadata <- read.csv("https://raw.githubusercontent.com/regan008/8510-TextAnalysisData/main/mb-metadata.csv")
+file_paths <- system.file("txt 2/")
+MBtexts <- readtext(paste("txt 2", "*.txt", sep = ""))
 ```
 
 (@) What happens if you create a custom stopword list? How does this change the model?
@@ -168,7 +170,7 @@ mb.metadata <- read.csv("https://raw.githubusercontent.com/regan008/8510-TextAna
 
 ```
 
-(@) Now, lets return to the Buffalo Bill data from last week. You should be able to use topic modeling to address two of the research questions provided:
+Choose a dataset from the github repository (see worksheet 5). You should be able to use topic modeling to address two of the research questions provided:
 
 * Can we detect some change over time in promotion language and reception language (marketing and reviewing)? Were there types of characters, scenarios, action promised in promotional material and/or noted in reviews earlier vs later?
 * What can be gleaned from the items tagged as extraneous as far as topics? These are news items that are somehow related to BBWW. Crime, finances, celebrity, etc.
