@@ -181,8 +181,15 @@ head(topics.MB)
 
 (@) Can you create a topic model for just the documents in the 1920s? How does that change the model? 
 ```{r}
-
-
+MB1920s <- MBfull %>% filter(Year == 1920:1929)
+MBfiltered1920s <- MB1920s %>% unnest_tokens(word, text) %>% filter(str_detect(word, "[a-z']$")) %>% anti_join(stop_words)
+MB1920smodel <- MBfiltered1920s %>% count(Filename, word) %>% cast_dtm(Filename, word, n)
+MB1920sLDA <- LDA(MB1920smodel, k = 3, control = list(seed = 12345))
+MB1920sLDA
+#Since changing the range to just 9 years shrunk the corpus significantly (from 826 rows to 10 rows) I reduced the number of topics to 5 to account for this change in size. 
+topics1920s <- tidy(MB1920sLDA, matrix = "beta") %>% arrange(desc(beta))
+head(topics1920s)
+#the corpus is so small that even 5 topics is too many! When changing to 3, I got similar results which is an empty dataframe. I think that changing the number of documents so drastically means that the corpus is too small to topic model now. 
 ```
 
 Choose a dataset from the github repository (see worksheet 5). You should be able to use topic modeling to address two of the research questions provided:
