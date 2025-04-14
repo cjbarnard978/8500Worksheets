@@ -192,17 +192,9 @@ head(topics1920s)
 #the corpus is so small that even 5 topics is too many! When changing to 3, I got similar results which is an empty dataframe. I think that changing the number of documents so drastically means that the corpus is too small to topic model now. 
 ```
 
-Choose a dataset from the github repository (see worksheet 5). You should be able to use topic modeling to address two of the research questions provided:
+(@) Choose one of the datasets from this repository or use one of your own: https://github.com/regan008/8510-TextAnalysisData. Note that there are both zip files with .txt files as well as separate metadata files for each publication in this repo. 
 
-* Can we detect some change over time in promotion language and reception language (marketing and reviewing)? Were there types of characters, scenarios, action promised in promotional material and/or noted in reviews earlier vs later?
-* What can be gleaned from the items tagged as extraneous as far as topics? These are news items that are somehow related to BBWW. Crime, finances, celebrity, etc.
-
-To analyze this you should first generate a topic model for the buffalo bill data. Play with the number of topics until you find a number that feels about right for the dataset. I am guessing it'll be in the 8-15 range but you'll need to play with it to see what number gives you the best fit. 
-
-To address the first research question, you'll need to plot topics over time. I would create three models, one for all of the data, one for promotion, and one for reception. What do we learn by doing this?
-
-For the second, a general topic model of the extraneous articles will be needed. 
-
+Fit a topic model that explores and asks questions of the texts. At the end write a summary that analyzes the results you found. Be sure to rely on your historical knowledge. What can we learn from applying the strategies you've learned in this worksheet to analyze these documents? How might topic models be useful to explore a large corpus of texts?
 Add code blocks below as necessary.
 
 (@) Finally, when you are all done. Write up your findings. What research question did you focus on and what did you learn? 
