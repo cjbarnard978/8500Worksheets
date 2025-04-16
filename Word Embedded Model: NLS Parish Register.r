@@ -35,7 +35,7 @@ ia_search(MedTheologyQuery, num_results = 11) %>% ia_get_items %>% ia_files %>% 
 
 #Let's try with this english specific corpus
 
-if(!file.exists("rec.txt")) prep_word2vec(origin = "Lib.Christian.Classics.Texts", destination = "rec.txt", lowercase = T, bundle_ngrams = 1)
+if(!file.exists("rec.txt")) prep_word2vec(origin = "Lib.Christian.Classics.Texts", destination = "rec.txt", lowercase = TRUE, bundle_ngrams = 1)
 
 if (!file.exists("rec.bin")) {
     model <- train_word2vec("rec.txt", "rec.bin", vectors = 150, threads = 3, window = 12, iter = 5, negative_samples = 0)
@@ -45,4 +45,15 @@ if (!file.exists("rec.bin")) {
 model %>% closest_to("heresy")
 #The same error message: error in vapply(x, asJSON, character(nrow(c)), collapse = FALSE, complex = complex, : values must be length 4070,
 #but FUN(X[[4]]) result is length 4071
-#Let's ask the robot 
+#Let's ask the robot: tells me to remove rec.bin and reload it. 
+file.remove("rec.bin")
+#This didn't work, but I went through the corpus manually and found some weird, corrupted txt files that I deleted
+#I also cleared my environment completely. Still throwing an error. Copilot: change T to True 
+#Trying this code that copilot generated-maybe it's because it's an IA corpus? 
+prep_word2vec(origin = "Lib.Christian.Classics.Texts", destination = "rec.txt", lowercase = TRUE, bundle_ngrams = 1)
+model <- train_word2vec("rec.txt", "rec.bin", vectors = 150, threads = 3, window = 12, iter = 5, negative_samples = 0)
+model %>% closest_to("heresy")
+#My theory is that because this is a corpus I scraped and tidied myself, the files ALL existed
+#and thus I didn't need to run the loop because I know all the files existed. 
+model %>% closest_to(c("heresy", "woman", "magic", "witch"))
+WEMselectedwords <- model %>% closest_to(c("heresy", "woman", "magic", "witch"), n = 25)
