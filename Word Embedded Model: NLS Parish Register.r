@@ -33,7 +33,9 @@ Lib.Christian.Classics.Meta <- Lib.Christian.Classics.Meta %>% pivot_wider(names
 dir.create("Lib.Christian.Classics.Texts")
 ia_search(MedTheologyQuery, num_results = 11) %>% ia_get_items %>% ia_files %>% filter(type == "txt") %>% group_by(id) %>% ia_download(dir = "Lib.Christian.Classics.Texts", overwrite = FALSE,) %>% glimpse()
 
-#Let's try with this english specific corpus
+#Let's try with this english specific corpus. Library of Christian Classics is a collection of primary sources relating to theology
+#It collects sermons, homilies, etc. This corpus includes the volume on Alexandrian Christianity, both volumes on St. Augustine,
+#and the volume on Western Asceticism. In other works, early Christian thought and monastic life. 
 
 if(!file.exists("rec.txt")) prep_word2vec(origin = "Lib.Christian.Classics.Texts", destination = "rec.txt", lowercase = TRUE, bundle_ngrams = 1)
 
@@ -57,3 +59,11 @@ model %>% closest_to("heresy")
 #and thus I didn't need to run the loop because I know all the files existed. 
 model %>% closest_to(c("heresy", "woman", "magic", "witch"))
 WEMselectedwords <- model %>% closest_to(c("heresy", "woman", "magic", "witch"), n = 25)
+
+womenLCCT <- model[[c("women", "heresy"), average = FALSE]]
+womenLCCT2 <- model[1:3000, ] %>% cosineSimilarity(womenLCCT)
+womenLCCT2 <- womenLCCT2[
+    rank(-womenLCCT2[, 1]) < 10 |
+        rank(-womenLCCT2[ 2]) <10
+]
+plot(womenLCCT2
