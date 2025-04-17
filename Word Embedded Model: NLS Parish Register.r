@@ -39,14 +39,18 @@ ia_search(MedTheologyQuery, num_results = 11) %>% ia_get_items %>% ia_files %>% 
 #I want to see what they're saying about women, heresy, and magic. Is it positive or negative? Does it make a regional or spatial argument?
 #How is heresy connected to women? Is it connected?
 
-if(!file.exists("rec.txt")) prep_word2vec(origin = "Lib.Christian.Classics.Texts", destination = "rec.txt", lowercase = TRUE, bundle_ngrams = 1)
+if(!file.exists("rec.txt")) prep_word2vec(origin = "Lib.Christian.Classics.Texts/", destination = "rec.txt", lowercase = TRUE, bundle_ngrams = 1)
 
 if (!file.exists("rec.bin")) {
-    model <- train_word2vec("rec.txt", "rec.bin", vectors = 150, threads = 3, window = 12, iter = 5, negative_samples = 0)
+    model = train_word2vec("rec.txt", "rec.bin", vectors = 150, threads = 3, window = 12, iter = 5, negative_samples = 0)
 } else {
-    model <- read.vectors("rec.bin")
+    model = read.vectors("rec.bin")
 }
+test.data <- model %>% as.data.frame()
+test <- model %>% as.data.frame()
 model %>% closest_to("heresy")
+file.remove("rec.bin")
+file.remove("rec.txt")
 #The same error message: error in vapply(x, asJSON, character(nrow(c)), collapse = FALSE, complex = complex, : values must be length 4070,
 #but FUN(X[[4]]) result is length 4071
 #Let's ask the robot: tells me to remove rec.bin and reload it. 
@@ -63,10 +67,10 @@ model %>% closest_to(c("heresy", "woman", "magic", "witch"))
 WEMselectedwords <- model %>% closest_to(c("heresy", "woman", "magic", "witch"), n = 25)
 
 womenLCCT <- model[[c("women", "heresy"), average = F]]
-womenLCCT2 <- model[2:100, ] %>% cosineSimilarity(womenLCCT, womenLCCT)
+womenLCCT2 <- model[1:300, ] %>% cosineSimilarity(womenLCCT)
 womenLCCT2 <- womenLCCT2[
     rank(-womenLCCT2[, 1]) < 10 |
-        rank(-womenLCCT2[ 2]) < 10
+        rank(-womenLCCT2[, 2]) < 10
 ]
 plot(womenLCCT2, type = "n") 
 text(womenLCCT2, labels = rownames(womenLCCT2))
@@ -106,3 +110,9 @@ str(result)
 #womenLCCT has 2 words and 150 vectors-let's change the matrix to 2
 ??cosineSimilarity
 try typing womenLCCT into cosine twice
+#put my code and your code into copilot and had it explain both codes 
+#I need to make sure that womenLCCT2 is a matrix which I don't think it is?
+str(WomenLCCT2) #it's a numeric matrix 
+dim(model[1:300, ])
+length(womenLCCT) 
+#this does not run no matter what we do. Changed vector number to smaller AND larger. Nothing. 

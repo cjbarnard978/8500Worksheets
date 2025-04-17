@@ -17,7 +17,7 @@ if (!file.exists("rec.bin")) {
 #Threads: number of processors to use on your computer, 2-8 threads 
 #iter/iterations parameter: how many times to read through the corpus 
 #clusters are not topics 
-library()
+library(DigitalMethodsData)
 library(wordVectors)
 library(tidyverse)
 
@@ -29,7 +29,7 @@ if (!file.exists("rec.bin")) {
 } else {
     model <- read.vectors("rec.bin")
 }
-
+testdata <- model %>% as.data.frame()
 ## Similarity searches
 
 model %>% closest_to("home")
@@ -130,7 +130,35 @@ subset %>%
     plot()
 Collapse
 
+ibrary(wordVectors)
+library(tidyverse)
 
+if (!file.exists("rec.txt")) prep_word2vec(origin = "wvtxt", destination = "rec.txt", lowercase = T, bundle_ngrams = 1)
+
+
+if (!file.exists("rec.bin")) {
+    model <- train_word2vec("rec.txt", "rec.bin", vectors = 150, threads = 8, window = 12, iter = 5, negative_samples = 0)
+} else {
+    model <- read.vectors("rec.bin")
+}
+
+## Similarity searches
+
+model %>% closest_to("american")
+model %>% closest_to("women")
+model %>% closest_to("war")
+model %>% closest_to(c("war", "women"), n = 25)
+
+
+# 20 most common words with war and women
+war <- model[[c("war", "women"), average = F]]
+warwomen <- model[1:3000, ] %>% cosineSimilarity(war)
+warwomen <- warwomen[
+    rank(-warwomen[, 1]) < 20 |
+        rank(-warwomen[, 2]) < 20,
+]
+plot(warwomen, type = "n")
+text(warwomen, labels = rownames(warwomen))
 
 
 
