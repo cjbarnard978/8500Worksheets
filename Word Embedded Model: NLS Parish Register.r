@@ -127,6 +127,10 @@ if (!file.exists("rec.bin")) {
 } 
 
 model %>% closest_to(c("heresy", "woman", "magic", "witch"))
+model %>% closest_to("witch")
+model %>% closest_to("magic")
+model %>% closest_to("virginity")
+model %>% closest_to("satan")
 WEMselectedwords <- model %>% closest_to(c("heresy", "woman", "magic", "witch"), n = 25)
 
 #Visualization 1
@@ -141,3 +145,26 @@ text(womenLCCT, labels = rownames(womenLCCT))
 library(ggplot2)
 
 #Visualization 2
+women.witch <- model[[c("women", "satan"), average = F]]
+womenwitches <- model[1:3000, ] %>% cosineSimilarity(women.witch)
+womenwitches2 <- womenwitches[
+    rank(-womenwitches[, 1]) < 20 |
+        rank(-womenwitches[, 2]) < 20,
+]
+plot(womenwitches2, type = "n")
+text(womenwitches2, labels = rownames(womenwitches2))
+#Error: Subscript out of bounds
+#For some reason the model isn't including both words
+#The word witch isn't in the corpus at all- checked by piping it into the model 
+#New list to use: women, heresy, virginity, satan
+
+#Visualization 3 
+women.virginity <- model[[c("women", "virginity"), average = F]]
+womenvirginity <- model[1:3000, ] %>% cosineSimilarity(women.virginity)
+virginityplot <- womenvirginity[
+    rank(-womenvirginity[, 1]) < 20 |
+        rank(-womenvirginity[, 2]) < 20,
+]
+plot(virginityplot, type = "n")
+text(virginityplot, labels = rownames(virginityplot))
+#Visualization 4
