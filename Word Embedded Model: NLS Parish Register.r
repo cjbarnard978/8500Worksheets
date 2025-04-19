@@ -117,3 +117,27 @@ str(WomenLCCT2) #it's a numeric matrix
 dim(model[1:300, ])
 length(womenLCCT) 
 #this does not run no matter what we do. Changed vector number to smaller AND larger. Nothing. 
+#It was a comma which I hate. 
+if(!file.exists("rec.txt")) prep_word2vec(origin = "Lib.Christian.Classics.Texts/", destination = "rec.txt", lowercase = TRUE, bundle_ngrams = 1)
+
+if (!file.exists("rec.bin")) {
+    model = train_word2vec("rec.txt", "rec.bin", vectors = 150, threads = 3, window = 12, iter = 5, negative_samples = 0)
+} else {
+    model = read.vectors("rec.bin")
+} 
+
+model %>% closest_to(c("heresy", "woman", "magic", "witch"))
+WEMselectedwords <- model %>% closest_to(c("heresy", "woman", "magic", "witch"), n = 25)
+
+#Visualization 1
+womenheresy <- model[[c("women", "heresy"), average = F]]
+womenLCCT <- model[1:3000, ] %>% cosineSimilarity(womenheresy)
+womenLCCT <- womenLCCT[
+    rank(-womenLCCT[, 1]) < 20 |
+        rank(-womenLCCT[, 2]) < 20,
+]
+plot(womenLCCT, type = "n") 
+text(womenLCCT, labels = rownames(womenLCCT))
+library(ggplot2)
+
+#Visualization 2
