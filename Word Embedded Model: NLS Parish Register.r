@@ -60,20 +60,21 @@ file.remove("rec.bin")
 #Trying this code that copilot generated-maybe it's because it's an IA corpus? 
 prep_word2vec(origin = "Lib.Christian.Classics.Texts", destination = "rec.txt", lowercase = TRUE, bundle_ngrams = 1)
 model <- train_word2vec("rec.txt", "rec.bin", vectors = 150, threads = 3, window = 12, iter = 5, negative_samples = 0)
-model %>% closest_to("heresy")
+model <- read.vectors("rec.bin")
+heresy <- model %>% closest_to("heresy")
 #My theory is that because this is a corpus I scraped and tidied myself, the files ALL existed
 #and thus I didn't need to run the loop because I know all the files existed. 
 model %>% closest_to(c("heresy", "woman", "magic", "witch"))
 WEMselectedwords <- model %>% closest_to(c("heresy", "woman", "magic", "witch"), n = 25)
 
-womenLCCT <- model[[c("women", "heresy"), average = F]]
-womenLCCT2 <- model[1:300, ] %>% cosineSimilarity(womenLCCT)
-womenLCCT2 <- womenLCCT2[
-    rank(-womenLCCT2[, 1]) < 10 |
-        rank(-womenLCCT2[, 2]) < 10
+womenheresy <- model[[c("women", "heresy"), average = F]]
+womenLCCT <- model[1:3000, ] %>% cosineSimilarity(womenheresy)
+womenLCCT <- womenLCCT[
+    rank(-womenLCCT[, 1]) < 20 |
+        rank(-womenLCCT[, 2]) < 20,
 ]
-plot(womenLCCT2, type = "n") 
-text(womenLCCT2, labels = rownames(womenLCCT2))
+plot(womenLCCT, type = "n") 
+text(womenLCCT, labels = rownames(womenLCCT))
 library(ggplot2)
 #I'm asking the robot why my visualization is blank-I reduced the model ratio to see if that helped but no change
 #Lots of solutions so we'll go one by one 
