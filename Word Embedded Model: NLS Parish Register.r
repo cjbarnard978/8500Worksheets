@@ -167,4 +167,12 @@ virginityplot <- womenvirginity[
 ]
 plot(virginityplot, type = "n")
 text(virginityplot, labels = rownames(virginityplot))
+
 #Visualization 4
+library(ggraph)
+library(ggplot2)
+dist <- dist(virginityplot, method = "euclidean",  diag = TRUE, upper = FALSE, p = 2)
+hc <- hclust(dist)
+plot(hc)
+#originally I tried to plot the entire model before I made it smaller and it was completely unreadable
+#https://r-graph-gallery.com/29-basic-dendrogram.html plus documentation for the dendrogram code
