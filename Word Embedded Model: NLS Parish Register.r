@@ -154,6 +154,7 @@ womenwitches2 <- womenwitches[
 plot(womenwitches2, type = "n")
 text(womenwitches2, labels = rownames(womenwitches2))
 #Error: Subscript out of bounds
+#https://stackoverflow.com/questions/15031338/subscript-out-of-bounds-general-definition-and-solution
 #For some reason the model isn't including both words
 #The word witch isn't in the corpus at all- checked by piping it into the model 
 #New list to use: women, heresy, virginity, satan
