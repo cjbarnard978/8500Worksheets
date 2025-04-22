@@ -47,6 +47,28 @@ head(undergroundrrcoords)
 (@) Geocode the Boston Women Voters dataset. Note that the data does include street addresses but because they are broken into parts - street address number, street, etc - you'll need to combine them into a full address to pass to the geocoding function. 
 ```{r}
 data("BostonWomenVoters")
+BWVfiltered <- BostonWomenVoters %>% pivot_longer(cols = "Street.of.Residence.on.April.1":"Unit", names_sep = ",", names_to = c("Street.of.Residence.on.April.1", "Street.Number.on.April.1", "Unit"), values_to = "street address")
+#copilot advice on combining rows so each woman shows up once:Basically my pivot longer was useless. 
+BWVfiltered <- BWVfiltered %>% group_by(Name) %>% summarize("street address")
+#Okay, pivot longer was definitely a waste of time. Doing it the way copilot said to do it
+BWVfiltered <- BWVfiltered %>% group_by(Name) %>% summarize(full.address = paste(Street.Number.On.April.1, Street.of.Residence.on.April.1, Unit, sep = " ", collapse = ""))
+#threw an error. running the EXACT code from copilot copy/pasted below
+BWVfiltered_combined <- BWVfiltered %>%
+  group_by(Name) %>%  
+  summarize(
+    full_address = paste(
+      Street.Number.on.April.1,
+      Street.of.Residence.on.April.1,
+      Unit,
+      sep = " ",
+      collapse = " "
+    )
+  )
+  #Throwing the same error: object not found. Copilot says to use the original dataset and do the same thing. 
+  BWVfiltered <- BostonWomenVoters %>% filter(Occupation == "Stenographer") %>% group_by(Name) %>% summarize(street.address = paste(Street.Number.on.April.1, Street.of.Residence.on.April.1, Unit, sep = " ", collapse = ""))
+  BWVcoords <- BWVfiltered %>% geocode(addr = street.address, method = "osm", lat = latitude, long = longitude)
+  head(BWVcoords)
+
 ```
 
 ### Maps with `ggplot()`
@@ -57,8 +79,8 @@ First we need to get a basemap. For this example we'll use the `map_data()` func
 
 (@) Look at the documentation for `map_data()`. Which geographies does this package provide access to?
 
->
-
+>This package allows you to access county maps, state maps, global maps, and country maps of Italy, New Zealand, the US, and France. 
+ye
 Lets load the base map data for the US. 
 ```{r}
 usa <- map_data("state")
@@ -66,7 +88,7 @@ usa <- map_data("state")
 
 (@) `map_data()` generates a data frame. Take a look at this data frame, what types of data are included? 
 
-> 
+> The USA state map includes latitude, longitude, region (which is state), and subregion, which I assume could be county. There are several lat/long combos for each state-major cities, maybe?
 
 
 We can now pass this data to ggplot to create a simple basemap. When we wanted to create a bar plot using `ggplot()` we called `geom_bar`. When we wanted to create a line chart we used `geom_point()` and `geom_line()`. The sample principle applies here and `ggplot()` provides a geom for maps.
