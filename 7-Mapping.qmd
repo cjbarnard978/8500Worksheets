@@ -112,7 +112,10 @@ ggplot() +
 
 (@) This map looks slightly funny, but that is because the data includes entries outside of the contiguous United States. Try filtering out those entries and mapping this again. Can you change the color or size of the points? Can you add a title?
 ```{r}
-
+gayguides <- gayguides %>% filter(Year == 1965) %>% filter(state != "HI")
+ggplot() + 
+  geom_map(data = usa, map = usa, aes(long, lat, map_id=region), fill = "lightgray", color = "black") +
+  geom_point(data = gayguides, mapping = aes(x = lon, y = lat), color = "red")
 ```
 
 (@) Can you map just locations in South Carolina (on a basemap of SC)? 
