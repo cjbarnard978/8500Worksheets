@@ -7,4 +7,4 @@ library(DigitalMethodsData)
 #watch what you're geocoding 
 ?map_data()
 NHGIS data 
-
+tech table questions 

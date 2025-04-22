@@ -1,7 +1,7 @@
 ---
 title: "Worksheet 7: Mapping"
-author: ""
-date: ""
+author: "Cecilia Barnard"
+date: "April 28 2025"
 ---
 
 _This is the seventh in a series of worksheets for History 8500 at Clemson University. The goal of these worksheets is simple: practice, practice, practice. The worksheet introduces concepts and techniques and includes prompts for you to practice in this interactive document. When you are finished, you should change the author name (above), render your document to a pdf, and upload it to canvas. Don't forget to commit your changes as you go and push to github when you finish the worksheet._
@@ -37,7 +37,10 @@ Now we have latitude and longitude coordinates for our data.
 
 (@) Use this approach to geocode the `UndergroundRR` data. 
 ```{r}
-
+data("UndergroundRR")
+undergroundrrcoords <- undergroundRR %>% geocode(city = City, county = County, state = State, method='osm', lat = latitude, long = longitude)
+head(undergroundrrcoords)
+#this gave some "invalid numbers" - towns that don't exist anymore?
 ```
 
 
