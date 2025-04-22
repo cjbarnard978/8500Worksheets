@@ -120,6 +120,11 @@ ggplot() +
 
 (@) Can you map just locations in South Carolina (on a basemap of SC)? 
 ```{r}
+gayguidessc <- gayguides %>% group_by(streetaddress, city, state) %>% filter(state == "SC")
+SCbasemap <- map_data("county", "south carolina")
+ggplot() + geom_map( data = SCbasemap, map = SCbasemap, aes(long, lat, map_id=region))
+ggplot() + geom_map( data = SCbasemap, map = SCbasemap, aes(long, lat, map_id=region), fill = "lightgray", color = "black") + geom_point(data = gayguidessc, mapping = aes(x = lon, y = lat), color = "red")
+
 
 ```
 
