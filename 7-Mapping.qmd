@@ -66,7 +66,7 @@ BWVfiltered_combined <- BWVfiltered %>%
   )
   #Throwing the same error: object not found. Copilot says to use the original dataset and do the same thing. 
   BWVfiltered <- BostonWomenVoters %>% filter(Occupation == "Stenographer") %>% group_by(Name) %>% summarize(street.address = paste(Street.Number.on.April.1, Street.of.Residence.on.April.1, Unit, sep = " ", collapse = ""))
-  BWVcoords <- BWVfiltered %>% geocode(addr = street.address, method = "osm", lat = latitude, long = longitude)
+  BWVcoords <- BWVfiltered %>% geocode(addr = street.address, method = "osm", lat = lat, long = long)
   head(BWVcoords)
 
 ```
@@ -123,20 +123,23 @@ ggplot() +
 gayguidessc <- gayguides %>% group_by(streetaddress, city, state) %>% filter(state == "SC")
 SCbasemap <- map_data("county", "south carolina")
 ggplot() + geom_map( data = SCbasemap, map = SCbasemap, aes(long, lat, map_id=region))
-ggplot() + geom_map( data = SCbasemap, map = SCbasemap, aes(long, lat, map_id=region), fill = "lightgray", color = "black") + geom_point(data = gayguidessc, mapping = aes(x = lon, y = lat), color = "red")
-
+ggplot() + geom_map( data = SCbasemap, map = SCbasemap, aes(long, lat, map_id=region), fill = "lightgray", color = "black") + geom_point(data = gayguidessc, mapping = aes(x = long, y = lat), color = "red")
 
 ```
 
 (@) Create a map that uses your geocoded data from the Boston Women Voters dataset. 
 ```{r}
-
+BostonBaseMap <- map_data("county", "massachusetts")
+ggplot() + geom_map( data = BostonBaseMap, map = BostonBaseMap, aes(long, lat, map_id=region))
+ggplot() + geom_map( data = BostonBaseMap, map = BostonBaseMap, aes(long, lat, map_id=region), fill = "white", color = "black") + geom_point(data = BWVcoords, mapping = aes(x = long, y = lat), color = "purple")
+either getting the basemap OR the plotted points? Robot time. 
+Changed names of columns so that they BOTH match. 
 ```
 
 Lets return to the recreational data for a minute.
 
 ```{r}
-#| eval: false
+"#| eval: false
 head(rec.data.coordinates)
 ```
 One interesting way to visualize this map might be to plot each location as a point on the map but to use the total_expenditures values to determine the size of the points. 
