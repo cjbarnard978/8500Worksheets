@@ -140,7 +140,7 @@ ggplot() + geom_map( data = BostonBaseMap, map = BostonBaseMap, aes(long, lat, m
 Lets return to the recreational data for a minute.
 
 ```{r}
-"#| eval: false
+"#| eval: false"
 head(rec.data.coordinates)
 ```
 One interesting way to visualize this map might be to plot each location as a point on the map but to use the total_expenditures values to determine the size of the points. 
@@ -197,7 +197,14 @@ ggplot(data = nhgis, aes(fill = AZF001)) +
 
 ```
 (@) In the code above, why filter out Hawaii and Alaska? Try commenting out that line and rerunning the code. What happens? Why might we want to do this? Why might we not want to do this? How does it shape the interpretation?
+
+```{r}
+nhgis <- ipums_shape_full_join(nhgis_data, nhgis_shp, by = "GISJOIN") 
+ggplot(data = nhgis, aes(fill = AZF001)) +
+  geom_sf()
+```
 >
+It completely skews the visualization of the map, making the US look very small and Alaska look massive. The scale is disrupted, which can lead to biased interpretations that do not take into consideration the actual comparative landmass of Alaska, Hawaii, and the US. 
 
 This is a great start. But using AZF001 (Native born males) as the fill does not create a useful visualization. It doesn't give us a sense of the proportion of that data. There are multiple problems with the map as it is, but one is that the color scale makes this incredibly hard to read. We can fix that by using a scale to break the values of AZF001 into bins and assign each a color. R has a function for this. It comes from the scales pacakge which you may need to install.
 
