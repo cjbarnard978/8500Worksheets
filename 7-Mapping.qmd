@@ -130,10 +130,11 @@ ggplot() + geom_map( data = SCbasemap, map = SCbasemap, aes(long, lat, map_id=re
 (@) Create a map that uses your geocoded data from the Boston Women Voters dataset. 
 ```{r}
 BostonBaseMap <- map_data("county", "massachusetts")
-ggplot() + geom_map( data = BostonBaseMap, map = BostonBaseMap, aes(long, lat, map_id=region))
+ggplot() + geom_map( data = BostonBaseMap, map = BostonBaseMap, aes(long, lat, map_id=region), fill = "white", color = "black")
 ggplot() + geom_map( data = BostonBaseMap, map = BostonBaseMap, aes(long, lat, map_id=region), fill = "white", color = "black") + geom_point(data = BWVcoords, mapping = aes(x = long, y = lat), color = "purple")
 #either getting the basemap OR the plotted points? Robot time. 
 #Changed names of columns so that they BOTH match. 
+#still only plotting EITHER basemap or points
 ```
 
 Lets return to the recreational data for a minute.
