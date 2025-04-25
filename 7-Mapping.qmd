@@ -268,7 +268,14 @@ leaflet(data=rec.data.coordinates) %>% addTiles() %>% addMarkers(~longitude, ~la
 
 (@) Use leaflet to map a dataset of your choice: 
 ```{r}
-
+witchcraftdata <- read.csv("https://raw.githubusercontent.com/cjbarnard978/CSVs/refs/heads/main/WitchcraftTrials15631663.csv")
+witchcraftcoordinates <- witchcraftdata %>% geocode(city = Parish, state = Presbytery, method='osm', lat = latitude, long = longitude)
+#this seems to be working? Apparently I only have 38 original addresses-this might be weird. 
+witchcraftmap <- leaflet()
+leaflet(data=witchcraftcoordinates) %>% addTiles() %>% addMarkers(~longitude, ~latitude, popup = paste("Name of Accused: ", witchcraftcoordinates$First.Name, witchcraftcoordinates$Last.Name, "Date: ", witchcraftcoordinates$Date, sep=" ")) 
+#copilot: find the syntax error in this code
+#fixed some spaces thank you copilot
+#This worked, but the fact that so many latitude and longitudes overlap really restrict leaflet
 ```
 
 (@) Explain what choices you made in building this map? Why might you use leaflet over ggplot? When would ggplot be more desirable? 
