@@ -218,19 +218,19 @@ This is now much more readable but the numbers represented are simply the raw po
 
 (@) First, create a variable called total_male_pop, with the total foreign and native born male population by summing the variables AZF001 and AZF003. 
 ```{r}
-total_male_pop <- ncol(AZF001) + ncol(AZF003)
+total_male_pop <- nhgis_data$AZF001 + nhgis_data$AZF003
 ```
 
 (@) Now, use the total_male_pop variable and create a variable for the the percentage of foreign born males.
 ```{r}
-
+percentagetmp <- nhgis_data$AZF003/total_male_pop
 ```
 
 (@) Now map your result. You'll want to replicate the code from the example above, but this time add another layer to the plot - a scale. Here we'll use this scale `scale_fill_continuous("", labels = scales::percent)`
 
 Before you write that code, look up the documentation for the above code (and look at the examples). What does it do? 
 
->
+>This code gives color and shading options to demonstrate gradient values. 
 
 Now create the map: 
 ```{r}
