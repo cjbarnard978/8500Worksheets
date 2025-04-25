@@ -280,7 +280,7 @@ leaflet(data=witchcraftcoordinates) %>% addTiles() %>% addMarkers(~longitude, ~l
 
 (@) Explain what choices you made in building this map? Why might you use leaflet over ggplot? When would ggplot be more desirable? 
 
->
+>I didn't make any particular choices in this dataset because I was VERY skeptical if it would run at all. Since it's global coordinate data I was anticipating issues like you experience in ARCgis without setting your environment to global. I picked Name and Year for the pop up data because they're the shortest columns in the dataset and improve readibility. I don't think this dataset works well with leaflet because the pop ups restrict my ability to use the frequencies like you can in ggplot. Since so many lat/longs overlap in this code, the leaflet is very restricted and can only show one or two trials per pop up. I think a visualization of trial density would be best for this dataset. 
 
 
 ### Exercises
