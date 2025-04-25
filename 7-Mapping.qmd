@@ -234,7 +234,11 @@ Before you write that code, look up the documentation for the above code (and lo
 
 Now create the map: 
 ```{r}
-
+nhgisdataframe <- as.data.frame(percentagetmp)
+ggplot(data = nhgisdataframe, aes(fill = percentagetmp)) + geom_sf(aes(fill = percentagetmp, )) + scale_fill_continuous(type = "gradient") + scale_fill_continuous(type = "viridis") + scale_fill_distiller(name="Percentage of Foreign Born Males", palette = "Spectral" , breaks = pretty_breaks(n = 10))
+#I need to join the data frames
+nhgisdata <- cross_join(nhgis, nhgisdataframe)
+ggplot(data = nhgisdata, aes(fill = percentagetmp)) + geom_sf(aes(fill = percentagetmp)) + scale_fill_continuous(type = "gradient") + scale_fill_distiller(name = "percentage of foreign born males", palette = spectral, breaks = pretty_breaks(n = 10))
 ```
 
 ### Leaflet
