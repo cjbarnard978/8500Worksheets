@@ -135,6 +135,7 @@ ggplot() + geom_map( data = BostonBaseMap, map = BostonBaseMap, aes(long, lat, m
 #either getting the basemap OR the plotted points? Robot time. 
 #Changed names of columns so that they BOTH match. 
 #still only plotting EITHER basemap or points
+#ETA April 29: still broken.
 ```
 
 Lets return to the recreational data for a minute.
@@ -238,7 +239,7 @@ nhgisdataframe <- as.data.frame(percentagetmp)
 ggplot(data = nhgisdataframe, aes(fill = percentagetmp)) + geom_sf(aes(fill = percentagetmp, )) + scale_fill_continuous(type = "gradient") + scale_fill_continuous(type = "viridis") + scale_fill_distiller(name="Percentage of Foreign Born Males", palette = "Spectral" , breaks = pretty_breaks(n = 10))
 #I need to join the data frames
 nhgisdata <- cross_join(nhgis, nhgisdataframe)
-ggplot(data = nhgisdata, aes(fill = percentagetmp)) + geom_sf(aes(fill = percentagetmp)) + scale_fill_continuous(type = "gradient") + scale_fill_distiller(name = "percentage of foreign born males", palette = "Spectral", breaks = pretty_breaks(n = 10))
+ggplot(data = nhgisdata, aes(fill = percentagetmp)) + geom_sf(aes(fill = percentagetmp)) + scale_fill_continuous(type = "gradient", name = "percentage of foreign born men", breaks = pretty_breaks(n = 10))
 ```
 
 ### Leaflet
@@ -295,21 +296,22 @@ worldbasemap <- ggplot() + geom_map (data = parks, map = worldmap, aes(long, lat
 #Visualization 1
 ggplot() + geom_map (data = parks, map = worldmap, aes(lon, lat, map_id=country), fill = "white", color = "black") + geom_point(data = park.age, mapping = aes(x = lon, y = lat ), color = "red")
 #why does the world map erase central and south america??
-#Global parks before 1960
+#Global parks before 1960: creates a baseline temporal comparison. 
 
 #Visualization 2
 park.age2 <- parks %>% group_by(year, country) %>% filter(year > 1960)
 ggplot() + geom_map (data = parks, map = worldmap, aes(lon, lat, map_id=country), fill = "white", color = "black") + geom_point(data = park.age2, mapping = aes(x = lon, y = lat ), color = "blue")
 #National parks built after 1960
-#The Americas develop most of their national parks before 1960, but Europe and Oceania develop most of theirs after 1960. 
+#The Americas develop most of their national parks before 1960, but Europe and Oceania develop most of theirs after 1960. Could be related to Europe's rebuilding process after WW2 and an increased interest in preservation of the landscape after destruction>
 
 #Visualization 3
 britainparks <- parks %>% group_by(country, year) %>% filter (country == "United Kingdom") %>% filter(year < 1975)
 Continentalparks <- parks %>% group_by(country, year) %>% filter(country == "France" | country == "Germany") %>% filter(year < 1975)
 
 ggplot() + geom_map (data = parks, map = worldmap, aes(lon, lat, map_id=country), fill = "white", color = "black") + geom_point(data = britainparks, mapping = aes(x = lon, y = lat), color = "blue") + geom_point(data = Continentalparks, mapping = aes(x = lon, y = lat), color = "red")
-#before 1975, Britain had the most national parks at 10, France had 4, and Germany had 2, both on borders.
+#before 1975, Britain had the most national parks at 10, France had 4, and Germany had 2, both on borders-> Cold war prioritization of land usage? 
 
+#Visualization 4
 britainparksize <- parks %>% group_by(park, year, total_sq_kilometers) %>% summarize(count = n())
 franceparksize <- parks %>% group_by(park, year, total_sq_kilometers) %>% summarize(count = n())
 britainandfrance <- parks %>% group_by(park, country, year, total_sq_kilometers, lat, lon) %>% filter(country == "France" | country == "United Kingdom") %>% filter(total_sq_kilometers > 100)
@@ -317,6 +319,7 @@ britainandfrance <- parks %>% group_by(park, country, year, total_sq_kilometers,
 library(leaflet)
 leaflet(data=britainandfrance) %>% addTiles() %>% addMarkers(~lon, ~lat, popup = paste("Park Name: ", britainandfrance$park, "Total Square Kilometers: ", britainandfrance$total_sq_kilometers, sep=" "))
 
+#Britain has more national parks that are larger than 100 sq km than France, which is interesting given that it has a smaller landmass. What are the French prioritizing instead of public land preservation? 
 
 ```
 
