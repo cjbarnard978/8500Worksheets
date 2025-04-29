@@ -238,7 +238,7 @@ nhgisdataframe <- as.data.frame(percentagetmp)
 ggplot(data = nhgisdataframe, aes(fill = percentagetmp)) + geom_sf(aes(fill = percentagetmp, )) + scale_fill_continuous(type = "gradient") + scale_fill_continuous(type = "viridis") + scale_fill_distiller(name="Percentage of Foreign Born Males", palette = "Spectral" , breaks = pretty_breaks(n = 10))
 #I need to join the data frames
 nhgisdata <- cross_join(nhgis, nhgisdataframe)
-ggplot(data = nhgisdata, aes(fill = percentagetmp)) + geom_sf(aes(fill = percentagetmp)) + scale_fill_continuous(type = "gradient") + scale_fill_distiller(name = "percentage of foreign born males", palette = spectral, breaks = pretty_breaks(n = 10))
+ggplot(data = nhgisdata, aes(fill = percentagetmp)) + geom_sf(aes(fill = percentagetmp)) + scale_fill_continuous(type = "gradient") + scale_fill_distiller(name = "percentage of foreign born males", palette = "Spectral", breaks = pretty_breaks(n = 10))
 ```
 
 ### Leaflet
