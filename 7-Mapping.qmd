@@ -288,5 +288,35 @@ For the next portion of this worksheet you will use some data about national par
 
 ```{r}
 parks <- read.csv("https://raw.githubusercontent.com/regan008/DigitalMethodsData/main/raw/parks-geocoded.csv")
+park.age <- parks %>% group_by(year, country) %>% filter(year < 1960)
+worldmap <- map_data("world")
+worldbasemap <- ggplot() + geom_map (data = parks, map = worldmap, aes(long, lat, map_id=country), fill = "white", color = "black")
+
+#Visualization 1
+ggplot() + geom_map (data = parks, map = worldmap, aes(lon, lat, map_id=country), fill = "white", color = "black") + geom_point(data = park.age, mapping = aes(x = lon, y = lat ), color = "red")
+#why does the world map erase central and south america??
+#Global parks before 1960
+
+#Visualization 2
+park.age2 <- parks %>% group_by(year, country) %>% filter(year > 1960)
+ggplot() + geom_map (data = parks, map = worldmap, aes(lon, lat, map_id=country), fill = "white", color = "black") + geom_point(data = park.age2, mapping = aes(x = lon, y = lat ), color = "blue")
+#National parks built after 1960
+#The Americas develop most of their national parks before 1960, but Europe and Oceania develop most of theirs after 1960. 
+
+#Visualization 3
+britainparks <- parks %>% group_by(country, year) %>% filter (country == "United Kingdom") %>% filter(year < 1975)
+Continentalparks <- parks %>% group_by(country, year) %>% filter(country == "France" | country == "Germany") %>% filter(year < 1975)
+
+ggplot() + geom_map (data = parks, map = worldmap, aes(lon, lat, map_id=country), fill = "white", color = "black") + geom_point(data = britainparks, mapping = aes(x = lon, y = lat), color = "blue") + geom_point(data = Continentalparks, mapping = aes(x = lon, y = lat), color = "red")
+#before 1975, Britain had the most national parks at 10, France had 4, and Germany had 2, both on borders.
+
+britainparksize <- parks %>% group_by(park, year, total_sq_kilometers) %>% summarize(count = n())
+franceparksize <- parks %>% group_by(park, year, total_sq_kilometers) %>% summarize(count = n())
+britainandfrance <- parks %>% group_by(park, country, year, total_sq_kilometers, lat, lon) %>% filter(country == "France" | country == "United Kingdom") %>% filter(total_sq_kilometers > 100)
+
+library(leaflet)
+leaflet(data=britainandfrance) %>% addTiles() %>% addMarkers(~lon, ~lat, popup = paste("Park Name: ", britainandfrance$park, "Total Square Kilometers: ", britainandfrance$total_sq_kilometers, sep=" "))
+
+
 ```
 
